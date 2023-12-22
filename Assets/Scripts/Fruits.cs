@@ -26,9 +26,9 @@ public class Fruits : MonoBehaviour
 
             if(col.gameObject.GetComponent<Fruits>().Level == this.Level)
             {
-                Vector3 fruit1 = gameObject.transform.position;
-                Vector3 fruit2 = col.gameObject.transform.position;
-                Instantiate(Prefeb, Vector3.Lerp(fruit1, fruit2, 0.5f));
+                ContactPoint2D contact = col.contacts[0];
+                Transform pos = contact.point;
+                Instantiate(Prefeb, (pos.x, pos.y, 0));
                 Destroy(col.gameObject, 0f);
                 Destroy(this, 0f);
                 return;
