@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Fruits : MonoBehaviour
 {
-    public int Size;
+    public int Level;
+    public GameObject Prefeb;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,16 @@ public class Fruits : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Fruits"))
         {
-            Destroy(col.gameObject, 0f);
-            return;
+
+            if(col.gameObject.GetComponent<Fruits>().Level == this.Level)
+            {
+                Vector3 fruit1 = gameObject.transform.position;
+                Vector3 fruit2 = col.gameObject.transform.position;
+                Instantiate(Prefeb, Vector3.Lerp(fruit1, fruit2, 0.5f));
+                Destroy(col.gameObject, 0f);
+                Destroy(this, 0f);
+                return;
+            }
         }
     }
 }
