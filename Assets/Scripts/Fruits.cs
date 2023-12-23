@@ -6,11 +6,12 @@ public class Fruits : MonoBehaviour
 {
     public int Level;
     public float SummonTime;
-    public GameObject SpawnPoint = GameObject.FindWithTag("SpawnPoint");
+    public GameObject SpawnPoint;
     // Start is called before the first frame update
     void Start()
     {
         SummonTime = Time.time;
+        SpawnPoint = GameObject.FindWithTag("SpawnPoint");
     }
 
     // Update is called once per frame
@@ -27,7 +28,8 @@ public class Fruits : MonoBehaviour
             {
                 if (col.gameObject.GetComponent<Fruits>().SummonTime  > SummonTime)
                 {
-                    SpawnPoint.GetComponent<SummonFruits>().Summon((this.Level + 1), col.transform);
+                    ContactPoint2D contact = col.contacts[0];
+                    SpawnPoint.GetComponent<SummonFruits>().Summon((this.Level+1),new Vector3(contact.point.x, contact.point.y, 0));
                 }
                 Destroy(gameObject, 0f);
                 return;

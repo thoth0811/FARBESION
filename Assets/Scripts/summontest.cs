@@ -15,7 +15,7 @@ public class summontest : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)){
-            SpawnPoint.GetComponent<SummonFruits>().Summon(Random.Range(1,4),gameObject.transform);
+            SpawnPoint.GetComponent<SummonFruits>().Summon(Random.Range(1,4),gameObject.transform.position);
         }
     }
 }
