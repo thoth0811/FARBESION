@@ -5,12 +5,12 @@ using UnityEngine;
 public class Fruits : MonoBehaviour
 {
     public int Level;
-    public GameObject Prefeb;
-
+    public float SummonTime;
+    public GameObject SpawnPoint = GameObject.FindWithTag("SpawnPoint");
     // Start is called before the first frame update
     void Start()
     {
-        
+        SummonTime = Time.time;
     }
 
     // Update is called once per frame
@@ -23,14 +23,13 @@ public class Fruits : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Fruits"))
         {
-
             if(col.gameObject.GetComponent<Fruits>().Level == this.Level)
             {
-                ContactPoint2D contact = col.contacts[0];
-                Transform pos = contact.point;
-                Instantiate(Prefeb, (pos.x, pos.y, 0));
-                Destroy(col.gameObject, 0f);
-                Destroy(this, 0f);
+                if (col.gameObject.GetComponent<Fruits>().SummonTime  > SummonTime)
+                {
+                    SpawnPoint.GetComponent<SummonFruits>().Summon((this.Level + 1), col.transform);
+                }
+                Destroy(gameObject, 0f);
                 return;
             }
         }
