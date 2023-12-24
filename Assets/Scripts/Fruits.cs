@@ -7,8 +7,8 @@ public class Fruits : MonoBehaviour
     public int Level;
     float SummonTime = 0;
     GameObject SpawnPoint;
-    public float TouchDeadLineTime = 0;
-    public float DeadLineTime = 1f;
+    float TouchDeadLineTime = 0;
+    float DeadLineTime = 3f;
     // Start is called before the first frame update
     void Start()
     {
