@@ -12,6 +12,9 @@ public class SummonFruits : MonoBehaviour
     public GameObject Lv6;
     public GameObject Lv7;
     public GameObject Lv8;
+    public GameObject Lv9;
+    public GameObject Lv10;
+    public GameObject Lv11;
 
     public void Summon(int Lv, Vector3 vec)
     {
@@ -25,6 +28,9 @@ public class SummonFruits : MonoBehaviour
             case 6: Instantiate(Lv6, vec, Quaternion.identity); break;
             case 7: Instantiate(Lv7, vec, Quaternion.identity); break;
             case 8: Instantiate(Lv8, vec, Quaternion.identity); break;
+            case 9: Instantiate(Lv9, vec, Quaternion.identity); break;
+            case 10: Instantiate(Lv10, vec, Quaternion.identity); break;
+            case 11: Instantiate(Lv11, vec, Quaternion.identity); break;
             default: break;
         }
     }
