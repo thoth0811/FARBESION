@@ -5,8 +5,10 @@ using UnityEngine;
 public class Fruits : MonoBehaviour
 {
     public int Level;
-    public float SummonTime;
-    public GameObject SpawnPoint;
+    float SummonTime = 0;
+    GameObject SpawnPoint;
+    public float TouchDeadLineTime = 0;
+    public float DeadLineTime = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +42,35 @@ public class Fruits : MonoBehaviour
         {
             Destroy(gameObject, 0f);
             return;
+        }
+        if (col.gameObject.CompareTag("DeadLine"))
+        {
+                TouchDeadLineTime = Time.time + DeadLineTime;
+        }
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("DeadLine"))
+        {
+            TouchDeadLineTime = Time.time + DeadLineTime;
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("DeadLine"))
+        {
+            if(Time.time >= TouchDeadLineTime)
+            {
+                SpawnPoint.GetComponent<SummonFruits>().ClearFruits();
+            }
+        }
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("DeadLine"))
+        {
+            TouchDeadLineTime = 0;
         }
     }
 }
