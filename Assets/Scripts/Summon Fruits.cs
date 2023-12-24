@@ -16,6 +16,8 @@ public class SummonFruits : MonoBehaviour
     public GameObject Lv10;
     public GameObject Lv11;
 
+    public int Score = 0;
+
     public void Summon(int Lv, Vector3 vec)
     {
         switch (Lv)

@@ -22,6 +22,25 @@ public class Fruits : MonoBehaviour
         
     }
 
+    void AddScore()
+    {
+        switch (Level)
+        {
+            case 1: SpawnPoint.GetComponent<SummonFruits>().Score += 1; break;
+            case 2: SpawnPoint.GetComponent<SummonFruits>().Score += 3; break;
+            case 3: SpawnPoint.GetComponent<SummonFruits>().Score += 6; break;
+            case 4: SpawnPoint.GetComponent<SummonFruits>().Score += 10; break;
+            case 5: SpawnPoint.GetComponent<SummonFruits>().Score += 15; break;
+            case 6: SpawnPoint.GetComponent<SummonFruits>().Score += 21; break;
+            case 7: SpawnPoint.GetComponent<SummonFruits>().Score += 28; break;
+            case 8: SpawnPoint.GetComponent<SummonFruits>().Score += 36; break;
+            case 9: SpawnPoint.GetComponent<SummonFruits>().Score += 45; break;
+            case 10: SpawnPoint.GetComponent<SummonFruits>().Score += 55; break;
+            case 11: SpawnPoint.GetComponent<SummonFruits>().Score += 66; break;
+            default: break;
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Fruits"))
@@ -33,8 +52,8 @@ public class Fruits : MonoBehaviour
                 {
                     ContactPoint2D contact = col.contacts[0];
                     SpawnPoint.GetComponent<SummonFruits>().Summon((this.Level+1),new Vector3(contact.point.x, contact.point.y, 0));
+                    AddScore();
                 }
-
                 return;
             }
         }

@@ -3,7 +3,18 @@ guid: ee44ede869feefe438d8ca91ca592925
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Lv1: {fileID: 4619635598440714456, guid: 5232ae2a5e20668439096f00ab79ea53, type: 3}
+  - Lv2: {fileID: 4619635598440714456, guid: 5f242177e538d9948a1401375dd01713, type: 3}
+  - Lv3: {fileID: 4619635598440714456, guid: 4622cca3709c0794d8df0a98e3a73e2d, type: 3}
+  - Lv4: {fileID: 4619635598440714456, guid: ebcdb49004c04124c8917a79f3022322, type: 3}
+  - Lv5: {fileID: 4619635598440714456, guid: c5dc75cff69ee9f4eb9422da4602cb9d, type: 3}
+  - Lv6: {fileID: 4619635598440714456, guid: d05bfb5449df5c94bbe93299eeea7881, type: 3}
+  - Lv7: {fileID: 4619635598440714456, guid: 255e9c55180ad034cb641d1a53b53458, type: 3}
+  - Lv8: {fileID: 4619635598440714456, guid: 3b5fbaa1c7384fc4290e23ae786021a2, type: 3}
+  - Lv9: {fileID: 4619635598440714456, guid: dddf0e4b0895b81459f9cc8d73ad660d, type: 3}
+  - Lv10: {fileID: 4619635598440714456, guid: 9e5aa4e355ab626459c87249e5833c19, type: 3}
+  - Lv11: {fileID: 4619635598440714456, guid: 7a90c462442757b478adfc0521dc7361, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
