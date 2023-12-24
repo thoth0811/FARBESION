@@ -49,3 +49,6 @@ TagManager:
   - name: Fruits
     uniqueID: 3054211277
     locked: 0
+  - name: FruitsSample
+    uniqueID: 338546417
+    locked: 0

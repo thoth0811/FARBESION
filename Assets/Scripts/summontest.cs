@@ -12,14 +12,20 @@ public class summontest : MonoBehaviour
     public float SpawnCool = 0.5f;
     float NextSpawn;
     int NextFruit = 0;
+    bool isSampleSpawn = false;
     // Start is called before the first frame update
-    void Sample()
+    void RemoveSample()
     {
         GameObject[] Fruits = GameObject.FindGameObjectsWithTag("FruitsSample");
         foreach (GameObject fruit in Fruits)
         {
             Destroy(fruit, 0f);
         }
+        isSampleSpawn = false;
+    }
+
+    void SpawnSample()
+    {
         NextFruit = Random.Range(1, 5);
         switch (NextFruit)
         {
@@ -29,16 +35,24 @@ public class summontest : MonoBehaviour
             case 4: Instantiate(Lv4, gameObject.transform.position, Quaternion.identity); break;
             default: break;
         }
+        isSampleSpawn = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isSampleSpawn)
+        {
+            if (NextSpawn <= Time.time)
+            {
+                SpawnSample();
+            }
+        }
         if (Input.GetKeyDown(KeyCode.Space)){
             if (NextSpawn <= Time.time) {
                 SpawnPoint.GetComponent<SummonFruits>().Summon(NextFruit, gameObject.transform.position);
                 NextSpawn = Time.time + SpawnCool;
-                Sample();
+                RemoveSample();
             }
         }
         if (Input.GetKey(KeyCode.RightArrow)) { 

@@ -10,6 +10,7 @@ public class Fruits : MonoBehaviour
     float TouchDeadLineTime = 0;
     float DeadLineTime = 3f;
     // Start is called before the first frame update
+    bool isMerging = false;
     void Start()
     {
         SummonTime = Time.time;
@@ -43,19 +44,16 @@ public class Fruits : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Fruits"))
+        if (col.gameObject.CompareTag("Fruits") && col.gameObject.GetComponent<Fruits>().Level == this.Level && col.gameObject.GetComponent<Fruits>().isMerging == isMerging)
         {
-            if(col.gameObject.GetComponent<Fruits>().Level == this.Level)
+            Destroy(gameObject, 0f);
+            if (col.gameObject.GetComponent<Fruits>().SummonTime  > SummonTime)
             {
-                Destroy(gameObject, 0f);
-                if (col.gameObject.GetComponent<Fruits>().SummonTime  > SummonTime)
-                {
-                    ContactPoint2D contact = col.contacts[0];
-                    SpawnPoint.GetComponent<SummonFruits>().Summon((this.Level+1),new Vector3(contact.point.x, contact.point.y, 0));
-                    AddScore();
-                }
-                return;
+                ContactPoint2D contact = col.contacts[0];
+                SpawnPoint.GetComponent<SummonFruits>().Summon((this.Level+1),new Vector3(contact.point.x, contact.point.y, 0));
+                AddScore();
             }
+            return;
         }
         if (col.gameObject.CompareTag("FruitsRemover"))
         {
