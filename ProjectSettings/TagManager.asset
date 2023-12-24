@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fruits
   - SpawnPoint
+  - FruitsRemover
   layers:
   - Default
   - TransparentFX

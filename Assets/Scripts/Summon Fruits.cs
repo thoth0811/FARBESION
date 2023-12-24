@@ -34,4 +34,13 @@ public class SummonFruits : MonoBehaviour
             default: break;
         }
     }
+
+    public void ClearFruits()
+    {
+        GameObject[] Fruits = GameObject.FindGameObjectsWithTag("Fruits");
+        foreach(GameObject fruit in Fruits)
+        {
+            Destroy(fruit, 0f);
+        }
+    }
 }

@@ -26,14 +26,20 @@ public class Fruits : MonoBehaviour
         {
             if(col.gameObject.GetComponent<Fruits>().Level == this.Level)
             {
+                Destroy(gameObject, 0f);
                 if (col.gameObject.GetComponent<Fruits>().SummonTime  > SummonTime)
                 {
                     ContactPoint2D contact = col.contacts[0];
                     SpawnPoint.GetComponent<SummonFruits>().Summon((this.Level+1),new Vector3(contact.point.x, contact.point.y, 0));
                 }
-                Destroy(gameObject, 0f);
+
                 return;
             }
+        }
+        if (col.gameObject.CompareTag("FruitsRemover"))
+        {
+            Destroy(gameObject, 0f);
+            return;
         }
     }
 }
