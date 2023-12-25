@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5578715535039846264}
   m_Layer: 7
   m_Name: Color Parts
-  m_TagString: FruitsSample
+  m_TagString: BallSample
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.21960786, g: 0, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.37647063, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,11 +98,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3609965010106360811}
   - component: {fileID: 9203003428750357989}
-  - component: {fileID: 454047518709476213}
-  - component: {fileID: 1353997684769755849}
+  - component: {fileID: -5208178648586047602}
+  - component: {fileID: 5676679177514748201}
   m_Layer: 7
-  m_Name: fruit 9 sample
-  m_TagString: FruitsSample
+  m_Name: ball 8 sample
+  m_TagString: BallSample
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,10 +116,10 @@ RectTransform:
   m_GameObject: {fileID: 4619635598440714456}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 2.6, y: 2.6, z: 2.6}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 878858141019071216}
+  - {fileID: 7034547972417773719}
   - {fileID: 1112465093483234674}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -180,20 +180,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &454047518709476213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4619635598440714456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38fcccfaf8afe284b97a36b0e2257e2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpawnPoint: {fileID: 0}
---- !u!58 &1353997684769755849
+--- !u!58 &-5208178648586047602
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,7 +215,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!1001 &2129531180885321947
+--- !u!114 &5676679177514748201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619635598440714456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38fcccfaf8afe284b97a36b0e2257e2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPoint: {fileID: 0}
+--- !u!1001 &8079587049122343612
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -290,11 +290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9133201526527734124, guid: d95da88540d2d6e44a0c4c40c581b24a, type: 3}
       propertyPath: Color.g
-      value: 0
+      value: 0.37647063
       objectReference: {fileID: 0}
     - target: {fileID: 9133201526527734124, guid: d95da88540d2d6e44a0c4c40c581b24a, type: 3}
       propertyPath: Color.r
-      value: 0.23137257
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9133201526527734124, guid: d95da88540d2d6e44a0c4c40c581b24a, type: 3}
       propertyPath: TransformIsDirty
@@ -313,8 +313,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d95da88540d2d6e44a0c4c40c581b24a, type: 3}
---- !u!4 &878858141019071216 stripped
+--- !u!4 &7034547972417773719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1278962375649610283, guid: d95da88540d2d6e44a0c4c40c581b24a, type: 3}
-  m_PrefabInstance: {fileID: 2129531180885321947}
+  m_PrefabInstance: {fileID: 8079587049122343612}
   m_PrefabAsset: {fileID: 0}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SummonFruits : MonoBehaviour
+public class SummonBalls : MonoBehaviour
 {
     public GameObject Lv1;
     public GameObject Lv2;
@@ -37,12 +37,12 @@ public class SummonFruits : MonoBehaviour
         }
     }
 
-    public void ClearFruits()
+    public void ClearBalls()
     {
-        GameObject[] Fruits = GameObject.FindGameObjectsWithTag("Fruits");
-        foreach(GameObject fruit in Fruits)
+        GameObject[] Balls = GameObject.FindGameObjectsWithTag("Balls");
+        foreach(GameObject ball in Balls)
         {
-            Destroy(fruit, 0f);
+            Destroy(ball, 0f);
         }
     }
 }

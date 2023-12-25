@@ -16,6 +16,6 @@ public class ShowScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Score.text = string.Format($"Score : {SpawnPoint.GetComponent<SummonFruits>().Score}");
+        Score.text = string.Format($"Score : {SpawnPoint.GetComponent<SummonBalls>().Score}");
     }
 }
