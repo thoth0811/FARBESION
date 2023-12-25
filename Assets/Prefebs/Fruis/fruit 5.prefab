@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level: 5
+  MergeParticle: {fileID: 7749716249370073715, guid: 13d89ea134a64dc43bccd8a55a6369ed, type: 3}
 --- !u!82 &-252556108004861636
 AudioSource:
   m_ObjectHideFlags: 0

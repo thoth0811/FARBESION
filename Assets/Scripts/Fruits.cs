@@ -9,6 +9,7 @@ public class Fruits : MonoBehaviour
     GameObject SpawnPoint;
     float TouchDeadLineTime = 0;
     float DeadLineTime = 3f;
+    public ParticleSystem MergeParticle;
     // Start is called before the first frame update
     bool isMerging = false;
     void Start()
@@ -41,17 +42,36 @@ public class Fruits : MonoBehaviour
             default: break;
         }
     }
-
+    void ShowParticle(ContactPoint2D contact)
+    {
+        switch (Level)
+        {
+            case 1: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
+            case 2: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
+            case 3: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
+            case 4: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
+            case 5: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
+            case 6: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
+            case 7: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
+            case 8: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
+            case 9: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
+            case 10: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
+            case 11: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
+            default: break;
+        }
+    }
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Fruits") && col.gameObject.GetComponent<Fruits>().Level == this.Level && col.gameObject.GetComponent<Fruits>().isMerging == isMerging)
         {
+            isMerging = true;
             Destroy(gameObject, 0f);
             if (col.gameObject.GetComponent<Fruits>().SummonTime  > SummonTime)
             {
                 ContactPoint2D contact = col.contacts[0];
-                SpawnPoint.GetComponent<SummonFruits>().Summon((this.Level+1),new Vector3(contact.point.x, contact.point.y, 0));
+                SpawnPoint.GetComponent<SummonFruits>().Summon(Level+1,new Vector3(contact.point.x, contact.point.y, 0));
                 AddScore();
+                ShowParticle(contact);
             }
             return;
         }
