@@ -9,6 +9,7 @@ TagManager:
   - BallSample
   - Balls
   - BallsRemover
+  - BallsBasket
   layers:
   - Default
   - TransparentFX

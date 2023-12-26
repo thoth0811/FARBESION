@@ -10,47 +10,42 @@ public class Balls : MonoBehaviour
     float TouchDeadLineTime = 0;
     float DeadLineTime = 3f;
     public ParticleSystem MergeParticle;
+    public AudioSource MergeSound;
+    float MergeSoundVolume = 0.5f;
+    public AudioSource BounceSound;
+    float BounceSoundVolume = 0.1f;
+    float BounceSoundSpeed = 1.5f;
     bool isMerge = false;
     // Start is called before the first frame update
     void Start()
     {
         SummonTime = Time.time;
         SpawnPoint = GameObject.FindWithTag("SpawnPoint");
+        if (gameObject.transform.position.y < 5)
+        {
+            MergeSound.Play();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        MergeSound.volume = MergeSoundVolume;
+        BounceSound.volume = BounceSoundVolume;
     }
-
     void AddScore()
     {
-        SpawnPoint.GetComponent<SummonBalls>().Score += Level*(Level+1)/2;
+        SpawnPoint.GetComponent<SummonBalls>().Score += Level * (Level + 1) / 2;
     }
     void ShowParticle(ContactPoint2D contact)
     {
-        switch (Level)
-        {
-            case 1: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
-            case 2: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
-            case 3: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
-            case 4: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
-            case 5: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
-            case 6: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
-            case 7: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
-            case 8: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
-            case 9: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
-            case 10: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
-            case 11: Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity); break;
-            default: break;
-        }
+        Instantiate(MergeParticle, new Vector3(contact.point.x, contact.point.y, 0), Quaternion.identity);
     }
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Balls") && col.gameObject.GetComponent<Balls>().Level == this.Level)
         {
-            if(isMerge == false && col.gameObject.GetComponent<Balls>().isMerge == false)
+            if (isMerge == false && col.gameObject.GetComponent<Balls>().isMerge == false)
             {
                 isMerge = true;
                 col.gameObject.GetComponent<Balls>().isMerge = true;
@@ -62,11 +57,24 @@ public class Balls : MonoBehaviour
                     ShowParticle(contact);
                 }
                 Destroy(gameObject, 0f);
-                Destroy(col.gameObject,0f);
+                Destroy(col.gameObject, 0f);
                 return;
             }
         }
-        if (col.gameObject.CompareTag("BallsRemover"))
+        if (col.gameObject.CompareTag("Balls") && col.gameObject.GetComponent<Balls>().Level != this.Level)
+        {
+            if (col.relativeVelocity.magnitude > BounceSoundSpeed) {
+                BounceSound.Play();
+            }
+        }
+    
+        if (col.gameObject.CompareTag("BallsBasket"))
+        {
+            if (col.relativeVelocity.magnitude > BounceSoundSpeed) {
+                BounceSound.Play();
+            }
+        }
+            if (col.gameObject.CompareTag("BallsRemover"))
         {
             Destroy(gameObject, 0f);
             return;
