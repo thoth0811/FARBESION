@@ -11,31 +11,60 @@ public class summontest : MonoBehaviour
     public GameObject SpawnPoint;
     public float SpawnCool = 0.5f;
     float NextSpawn;
-    int NextBall = 0;
+    Queue<int> NextBalls = new Queue<int>(3);
+    int[] NextBall = new int[3];
     bool isSampleSpawn = false;
+    GameObject Ball;
+    GameObject[] Balls = new GameObject[3];
     // Start is called before the first frame update
+    void Start()
+    {
+        NextBalls.Enqueue(Random.Range(1, 5));
+        NextBalls.Enqueue(Random.Range(1, 5));
+        NextBalls.Enqueue(Random.Range(1, 5));
+    }
+
     void RemoveSample()
     {
-        GameObject[] Balls = GameObject.FindGameObjectsWithTag("BallSample");
+        NextBalls.Enqueue(Random.Range(1, 5));
         foreach (GameObject ball in Balls)
         {
             Destroy(ball, 0f);
         }
+
         isSampleSpawn = false;
     }
 
     void SpawnSample()
     {
-        NextBall = Random.Range(1, 5);
-        switch (NextBall)
+        isSampleSpawn = true;
+        NextBall = NextBalls.ToArray();
+        switch (NextBall[0])
         {
-            case 1: Instantiate(Lv1, gameObject.transform.position, Quaternion.identity); break;
-            case 2: Instantiate(Lv2, gameObject.transform.position, Quaternion.identity); break;
-            case 3: Instantiate(Lv3, gameObject.transform.position, Quaternion.identity); break;
-            case 4: Instantiate(Lv4, gameObject.transform.position, Quaternion.identity); break;
+            case 1: Ball = Instantiate(Lv1, gameObject.transform.position, Quaternion.identity); break;
+            case 2: Ball = Instantiate(Lv2, gameObject.transform.position, Quaternion.identity); break;
+            case 3: Ball = Instantiate(Lv3, gameObject.transform.position, Quaternion.identity); break;
+            case 4: Ball = Instantiate(Lv4, gameObject.transform.position, Quaternion.identity); break;
             default: break;
         }
-        isSampleSpawn = true;
+        Balls[0] = Ball;
+        Ball.gameObject.GetComponent<BallsSample>().isNext = true;
+        switch (NextBall[1])
+        {
+            case 1: Balls[1] = Instantiate(Lv1, new Vector3(-5, 4.5f, 0), Quaternion.identity); break;
+            case 2: Balls[1] = Instantiate(Lv2, new Vector3(-5, 4.5f, 0), Quaternion.identity); break;
+            case 3: Balls[1] = Instantiate(Lv3, new Vector3(-5, 4.5f, 0), Quaternion.identity); break;
+            case 4: Balls[1] = Instantiate(Lv4, new Vector3(-5, 4.5f, 0), Quaternion.identity); break;
+            default: break;          
+        }                            
+        switch (NextBall[2])         
+        {                            
+            case 1: Balls[2] = Instantiate(Lv1, new Vector3(-7, 4.5f, 0), Quaternion.identity); break;
+            case 2: Balls[2] = Instantiate(Lv2, new Vector3(-7, 4.5f, 0), Quaternion.identity); break;
+            case 3: Balls[2] = Instantiate(Lv3, new Vector3(-7, 4.5f, 0), Quaternion.identity); break;
+            case 4: Balls[2] = Instantiate(Lv4, new Vector3(-7, 4.5f, 0), Quaternion.identity); break;
+            default: break;
+        }
     }
 
     // Update is called once per frame
@@ -43,14 +72,12 @@ public class summontest : MonoBehaviour
     {
         if (!isSampleSpawn)
         {
-            if (NextSpawn <= Time.time)
-            {
-                SpawnSample();
-            }
+            SpawnSample();
+
         }
         if (Input.GetKeyDown(KeyCode.Space)){
             if (NextSpawn <= Time.time) {
-                SpawnPoint.GetComponent<SummonBalls>().Summon(NextBall, gameObject.transform.position);
+                SpawnPoint.GetComponent<SummonBalls>().Summon(NextBalls.Dequeue(), gameObject.transform.position);
                 NextSpawn = Time.time + SpawnCool;
                 RemoveSample();
             }
@@ -67,10 +94,5 @@ public class summontest : MonoBehaviour
                 gameObject.transform.position += new Vector3(-0.01f, 0, 0);
             }
         }
-        //전체 초기화 테스트용 코드
-        //if (Input.GetKey(KeyCode.C))
-        //{
-        //    SpawnPoint.GetComponent<SummonBalls>().ClearBalls();
-        //}
     }
 }
