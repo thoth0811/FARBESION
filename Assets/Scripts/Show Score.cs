@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class ShowScore : MonoBehaviour
 {
-    public Text Score;
+    public TextMeshProUGUI Score;
     GameObject SpawnPoint;
     // Start is called before the first frame update
     void Start()
