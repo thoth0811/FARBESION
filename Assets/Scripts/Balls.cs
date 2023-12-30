@@ -10,8 +10,6 @@ public class Balls : MonoBehaviour
     float TouchDeadLineTime = 0;
     float DeadLineTime = 3f;
     public ParticleSystem MergeParticle;
-    public AudioSource MergeSound;
-    float MergeSoundVolume = 0.5f;
     public AudioSource BounceSound;
     float BounceSoundVolume = 0.1f;
     float BounceSoundSpeed = 1.5f;
@@ -21,16 +19,11 @@ public class Balls : MonoBehaviour
     {
         SummonTime = Time.time;
         SpawnPoint = GameObject.FindWithTag("SpawnPoint");
-        if (gameObject.transform.position.y < 5)
-        {
-            MergeSound.Play();
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        MergeSound.volume = MergeSoundVolume;
         BounceSound.volume = BounceSoundVolume;
     }
     void AddScore()
