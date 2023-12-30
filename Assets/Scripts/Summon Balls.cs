@@ -118,7 +118,7 @@ public class SummonBalls : MonoBehaviour
             SpawnSample();
 
         }
-        if (Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKey(KeyCode.Space)){
             if (NextSpawn <= Time.time) {
                 Summon(NextBallsNum.Dequeue(), gameObject.transform.position);
                 NextSpawn = Time.time + SpawnCool;
