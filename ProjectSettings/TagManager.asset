@@ -10,6 +10,7 @@ TagManager:
   - Balls
   - BallsRemover
   - BallsBasket
+  - Number
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Balls
   - BallsRemover
   - Text
-  - Number
+  - 
   - 
   - 
   - 

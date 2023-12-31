@@ -6,8 +6,8 @@ public class ShowScore : MonoBehaviour
 {
     GameObject SpawnPoint;
     int[] ScorePos = {330, 400, 470, 540, 610};
-    int[] Score_Solo = {0, 0, 0, 0, 0};
-    int Score;
+    public int[] ScoreSolo = {0, 0, 0, 0, 0};
+    int Score = 0;
     public GameObject Num0, Num1, Num2, Num3, Num4, Num5, Num6, Num7, Num8, Num9;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +21,7 @@ public class ShowScore : MonoBehaviour
         if(Score != SpawnPoint.GetComponent<SummonBalls>().Score)
         {
             Score = SpawnPoint.GetComponent<SummonBalls>().Score;
+            SpawnNum();
         }
     }
 
@@ -30,6 +31,15 @@ public class ShowScore : MonoBehaviour
         foreach (GameObject num in GameNums)
         {
             Destroy(num, 0f);
+        }
+    }
+
+    public void SetParent()
+    {
+        GameObject[] GameNums = GameObject.FindGameObjectsWithTag("Number");
+        foreach (GameObject num in GameNums)
+        {
+            num.transform.SetParent(this.transform);
         }
     }
 
@@ -52,10 +62,22 @@ public class ShowScore : MonoBehaviour
     }
     void NumCut()
     {
-        Score_Solo[0] = (Score) / 10000;
-        Score_Solo[1] = (Score % 10000) / 1000;
-        Score_Solo[2] = (Score % 1000) / 100;
-        Score_Solo[3] = (Score % 100) / 10;
-        Score_Solo[4] = (Score % 10);
+        ScoreSolo[0] = (Score) / 10000;
+        ScoreSolo[1] = (Score % 10000) / 1000;
+        ScoreSolo[2] = (Score % 1000) / 100;
+        ScoreSolo[3] = (Score % 100) / 10;
+        ScoreSolo[4] = (Score % 10);
+    }
+
+    void SpawnNum()
+    {
+        ClearNums();
+        NumCut();
+        Instantiate(SetNum(ScoreSolo[0]), new Vector3(ScorePos[0], 230, 0), Quaternion.identity);
+        Instantiate(SetNum(ScoreSolo[1]), new Vector3(ScorePos[1], 230, 0), Quaternion.identity);
+        Instantiate(SetNum(ScoreSolo[2]), new Vector3(ScorePos[2], 230, 0), Quaternion.identity);
+        Instantiate(SetNum(ScoreSolo[3]), new Vector3(ScorePos[3], 230, 0), Quaternion.identity);
+        Instantiate(SetNum(ScoreSolo[4]), new Vector3(ScorePos[4], 230, 0), Quaternion.identity);
+        SetParent();
     }
 }
