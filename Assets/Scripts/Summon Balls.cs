@@ -4,23 +4,8 @@ using UnityEngine;
 
 public class SummonBalls : MonoBehaviour
 {
-    public GameObject Lv1s;
-    public GameObject Lv2s;
-    public GameObject Lv3s;
-    public GameObject Lv4s;
-
-    public GameObject Lv1;
-    public GameObject Lv2;
-    public GameObject Lv3;
-    public GameObject Lv4;
-    public GameObject Lv5;
-    public GameObject Lv6;
-    public GameObject Lv7;
-    public GameObject Lv8;
-    public GameObject Lv9;
-    public GameObject Lv10;
-    public GameObject Lv11;
-
+    public GameObject Lv1s, Lv2s, Lv3s, Lv4s;
+    public GameObject Lv1, Lv2, Lv3, Lv4, Lv5, Lv6, Lv7, Lv8, Lv9, Lv10, Lv11;
     public int Score = 0;
 
     public GameObject SpawnPoint;

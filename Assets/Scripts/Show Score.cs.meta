@@ -3,7 +3,17 @@ guid: 2ea01f3d2817b9741803cebed8c64a94
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Num0: {fileID: 3154067902119572795, guid: 04b4c018a8c976a4b809ecf8d9260e07, type: 3}
+  - Num1: {fileID: 3154067902119572795, guid: 472eea9af9457814ea3c5b1e30deacb0, type: 3}
+  - Num2: {fileID: 3154067902119572795, guid: d23fd1a9e4c991947b387571c76370a7, type: 3}
+  - Num3: {fileID: 3154067902119572795, guid: 10687ed8c98fdfc4da7e3850173b98eb, type: 3}
+  - Num4: {fileID: 3154067902119572795, guid: 873059dd46667904390db10f8d000b6d, type: 3}
+  - Num5: {fileID: 3154067902119572795, guid: b7fb283081c20924798507d325b02342, type: 3}
+  - Num6: {fileID: 3154067902119572795, guid: 5207fcb0a7ee4d54992569776126d412, type: 3}
+  - Num7: {fileID: 3154067902119572795, guid: d2fb0e11cd9fb6049b7fda16492e593a, type: 3}
+  - Num8: {fileID: 3154067902119572795, guid: e1180e4b42f349244805abe07bf5cd87, type: 3}
+  - Num9: {fileID: 3154067902119572795, guid: 88f6b3df883af9a4690fb4bb8208c495, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
