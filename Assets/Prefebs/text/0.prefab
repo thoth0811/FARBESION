@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3121533903229720391}
   - component: {fileID: 7465444943102460666}
   - component: {fileID: 7456410365576621247}
-  - component: {fileID: 1230908173695485729}
+  - component: {fileID: 7061169311901408360}
   m_Layer: 9
   m_Name: 0
   m_TagString: Number
@@ -135,8 +135,8 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!70 &1230908173695485729
-CapsuleCollider2D:
+--- !u!60 &7061169311901408360
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -167,6 +167,40 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.18429565, y: 10.0926285}
-  m_Size: {x: 53.672607, y: 81.43404}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -26.525055, y: -7.8417053}
+      - {x: -26.743896, y: 25.445343}
+      - {x: -24.945587, y: 33.58258}
+      - {x: -21.942047, y: 39.762466}
+      - {x: -18.089355, y: 44.14383}
+      - {x: -13.328583, y: 47.598907}
+      - {x: -6.8055115, y: 49.96132}
+      - {x: 0.070739746, y: 50.84433}
+      - {x: 8.089478, y: 49.625534}
+      - {x: 14.623108, y: 46.99185}
+      - {x: 21.87564, y: 40.464584}
+      - {x: 25.69461, y: 33.524292}
+      - {x: 26.942139, y: 26.800568}
+      - {x: 26.970337, y: -7.3391266}
+      - {x: 24.528625, y: -15.751251}
+      - {x: 20.14569, y: -22.106552}
+      - {x: 15.053558, y: -26.699982}
+      - {x: 7.4662476, y: -29.542572}
+      - {x: -1.0228577, y: -30.757446}
+      - {x: -10.156464, y: -28.991531}
+      - {x: -15.934143, y: -25.570496}
+      - {x: -20.494995, y: -21.471191}
+      - {x: -24.141083, y: -16.112976}
+      - {x: -26.525055, y: -7.8417053}
+  m_UseDelaunayMesh: 0

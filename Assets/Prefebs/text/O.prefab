@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3121533903229720391}
   - component: {fileID: 7465444943102460666}
   - component: {fileID: 7456410365576621247}
-  - component: {fileID: 4696046257649973765}
+  - component: {fileID: 213282449778208051}
   m_Layer: 9
   m_Name: O
   m_TagString: Untagged
@@ -135,8 +135,8 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!70 &4696046257649973765
-CapsuleCollider2D:
+--- !u!60 &213282449778208051
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -167,6 +167,37 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.038253784, y: 9.9704895}
-  m_Size: {x: 80.764435, y: 81.79736}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 32.37506, y: 34.564026}
+      - {x: 24.96524, y: 42.20529}
+      - {x: 13.077698, y: 48.747787}
+      - {x: 0.11254883, y: 50.908875}
+      - {x: -11.465698, y: 49.365112}
+      - {x: -21.22763, y: 44.813507}
+      - {x: -29.740997, y: 37.586395}
+      - {x: -35.92411, y: 28.571758}
+      - {x: -39.408386, y: 18.107285}
+      - {x: -40.106415, y: 11.596939}
+      - {x: -38.963806, y: -1.6069489}
+      - {x: -32.21521, y: -14.641846}
+      - {x: -25.162037, y: -22.018993}
+      - {x: -15.341278, y: -27.953339}
+      - {x: -2.213501, y: -30.918564}
+      - {x: 10.458557, y: -29.603409}
+      - {x: 21.565752, y: -24.691357}
+      - {x: 32.196198, y: -14.627014}
+      - {x: 39.556396, y: 1.9807281}
+      - {x: 40.08777, y: 15.361282}
+      - {x: 36.81138, y: 26.898388}
+  m_UseDelaunayMesh: 0
