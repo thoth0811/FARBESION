@@ -25,6 +25,7 @@ public class Balls : MonoBehaviour
     void Update()
     {
         BounceSound.volume = BounceSoundVolume;
+        CheckBallOut();
     }
     void AddScore()
     {
@@ -84,7 +85,6 @@ public class Balls : MonoBehaviour
             TouchDeadLineTime = Time.time + DeadLineTime;
         }
     }
-
     void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("DeadLine"))
@@ -100,6 +100,22 @@ public class Balls : MonoBehaviour
         if (col.gameObject.CompareTag("DeadLine"))
         {
             TouchDeadLineTime = 0;
+        }
+    }
+
+    void CheckBallOut()
+    {
+        if(this.transform.position.x > 3)
+        {
+            this.transform.position = new Vector3(2.9f - 0.15f * Level, this.transform.position.y, 0);
+        }
+        if (this.transform.position.x < -3)
+        {
+            this.transform.position = new Vector3(-2.9f + 0.15f * Level, this.transform.position.y, 0);
+        }
+        if (this.transform.position.y < -4.5f)
+        {
+            this.transform.position = new Vector3(this.transform.position.x, -4.4f + 0.15f * Level, 0);
         }
     }
 }

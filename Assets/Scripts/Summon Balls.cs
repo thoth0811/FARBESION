@@ -9,7 +9,7 @@ public class SummonBalls : MonoBehaviour
     public int Score = 0;
 
     public GameObject SpawnPoint;
-    public float SpawnCool = 0.5f;
+    public float SpawnCool = 0.7f;
     float NextSpawn;
     Queue<int> NextBallsNum = new Queue<int>(3);
     int[] NextBall = new int[3];
@@ -111,15 +111,15 @@ public class SummonBalls : MonoBehaviour
             }
         }
         if (Input.GetKey(KeyCode.RightArrow)) { 
-            if(gameObject.transform.position.x < 2.85) {
-                gameObject.transform.position += new Vector3(0.01f, 0, 0);
+            if(gameObject.transform.position.x < 2.55) {
+                gameObject.transform.position += new Vector3(2f * Time.deltaTime, 0, 0);
             }
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            if (gameObject.transform.position.x > -2.85)
+            if (gameObject.transform.position.x > -2.55)
             {
-                gameObject.transform.position += new Vector3(-0.01f, 0, 0);
+                gameObject.transform.position += new Vector3(-2f * Time.deltaTime, 0, 0);
             }
         }
     }
