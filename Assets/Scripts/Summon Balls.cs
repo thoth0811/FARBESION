@@ -9,7 +9,7 @@ public class SummonBalls : MonoBehaviour
     public int Score = 0;
 
     public GameObject SpawnPoint;
-    public float SpawnCool = 0.7f;
+    public float SpawnCool;
     float NextSpawn;
     Queue<int> NextBallsNum = new Queue<int>(3);
     int[] NextBall = new int[3];
@@ -67,16 +67,7 @@ public class SummonBalls : MonoBehaviour
     {
         isSampleSpawn = true;
         NextBall = NextBallsNum.ToArray();
-        switch (NextBall[0])
-        {
-            case 1: Ball = Instantiate(Lv1s, gameObject.transform.position, Quaternion.identity); break;
-            case 2: Ball = Instantiate(Lv2s, gameObject.transform.position, Quaternion.identity); break;
-            case 3: Ball = Instantiate(Lv3s, gameObject.transform.position, Quaternion.identity); break;
-            case 4: Ball = Instantiate(Lv4s, gameObject.transform.position, Quaternion.identity); break;
-            default: break;
-        }
-        Balls[0] = Ball;
-        Ball.gameObject.GetComponent<BallsSample>().isNext = true;
+        Invoke("SpawnNextBall", SpawnCool - 0.1f);
         switch (NextBall[1])
         {
             case 1: Balls[1] = Instantiate(Lv1s, new Vector3(-5, 4.5f, 0), Quaternion.identity); break;
@@ -122,5 +113,18 @@ public class SummonBalls : MonoBehaviour
                 gameObject.transform.position += new Vector3(-2f * Time.deltaTime, 0, 0);
             }
         }
+    }
+    void SpawnNextBall()
+    {
+        switch (NextBall[0])
+        {
+            case 1: Ball = Instantiate(Lv1s, gameObject.transform.position, Quaternion.identity); break;
+            case 2: Ball = Instantiate(Lv2s, gameObject.transform.position, Quaternion.identity); break;
+            case 3: Ball = Instantiate(Lv3s, gameObject.transform.position, Quaternion.identity); break;
+            case 4: Ball = Instantiate(Lv4s, gameObject.transform.position, Quaternion.identity); break;
+            default: break;
+        }
+        Balls[0] = Ball;
+        Ball.gameObject.GetComponent<BallsSample>().isNext = true;
     }
 }

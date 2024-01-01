@@ -220,10 +220,6 @@ PrefabInstance:
       propertyPath: ContactFilter.layerMask.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}
-    - target: {fileID: 9133201526527734124, guid: d95da88540d2d6e44a0c4c40c581b24a, type: 3}
-      propertyPath: filteringSettings.layerMask.m_Bits
-      value: 1728
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

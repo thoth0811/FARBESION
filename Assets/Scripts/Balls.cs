@@ -68,11 +68,6 @@ public class Balls : MonoBehaviour
                 BounceSound.Play();
             }
         }
-            if (col.gameObject.CompareTag("BallsRemover"))
-        {
-            Destroy(gameObject, 0f);
-            return;
-        }
         if (col.gameObject.CompareTag("DeadLine"))
         {
                 TouchDeadLineTime = Time.time + DeadLineTime;

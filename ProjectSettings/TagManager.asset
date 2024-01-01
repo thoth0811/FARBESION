@@ -8,7 +8,6 @@ TagManager:
   - DeadLine
   - BallSample
   - Balls
-  - BallsRemover
   - BallsBasket
   - Number
   layers:
@@ -20,7 +19,7 @@ TagManager:
   - UI
   - Balls Basket
   - Balls
-  - BallsRemover
+  - 
   - Text
   - BallsSample
   - 
