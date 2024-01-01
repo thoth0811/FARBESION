@@ -92,6 +92,7 @@ public class Balls : MonoBehaviour
             if(Time.time >= TouchDeadLineTime)
             {
                 SpawnPoint.GetComponent<SummonBalls>().ClearBalls();
+                SpawnPoint.GetComponent<SummonBalls>().Score = 0;
             }
         }
     }
