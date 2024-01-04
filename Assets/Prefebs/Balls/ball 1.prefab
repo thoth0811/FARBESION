@@ -170,6 +170,7 @@ MonoBehaviour:
   Level: 1
   MergeParticle: {fileID: 7749716249370073715, guid: 13d89ea134a64dc43bccd8a55a6369ed, type: 3}
   BounceSound: {fileID: 9152611648964668981}
+  HighQuality: 1
 --- !u!82 &9152611648964668981
 AudioSource:
   m_ObjectHideFlags: 0

@@ -14,11 +14,15 @@ public class Balls : MonoBehaviour
     float BounceSoundVolume = 0.1f;
     float BounceSoundSpeed = 1.5f;
     bool isMerge = false;
+    GameObject Light2D;
+    public bool HighQuality = true;
     // Start is called before the first frame update
     void Start()
     {
         SummonTime = Time.time;
         SpawnPoint = GameObject.FindWithTag("SpawnPoint");
+
+        SetQuality();
     }
 
     // Update is called once per frame
@@ -114,4 +118,19 @@ public class Balls : MonoBehaviour
             this.transform.position = new Vector3(this.transform.position.x, -4.4f + 0.15f * Level, 0);
         }
     }
+
+    void SetQuality()
+    {
+        Light2D = transform.GetChild(0).gameObject;
+
+        if (HighQuality)
+        {
+            Light2D.GetComponent<HardLight2D>().filteringSettings.layerMask = (1 << 6) | (1 << 7) | (1 << 9) | (1 << 10);
+        }
+        else
+        {
+            Light2D.GetComponent<HardLight2D>().filteringSettings.layerMask = (1 << 6) | (1 << 9);
+        }
+    }
 }
+
