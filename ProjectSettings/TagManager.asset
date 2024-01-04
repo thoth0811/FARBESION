@@ -10,6 +10,7 @@ TagManager:
   - Balls
   - BallsBasket
   - Number
+  - BackLight
   layers:
   - Default
   - TransparentFX

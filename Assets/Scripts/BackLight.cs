@@ -6,13 +6,12 @@ using UnityEngine.SceneManagement;
 public class BackLight : MonoBehaviour
 {
     public int x, y, X_WaveSize, Y_WaveSize;
-    GameObject Light2D;
     public bool HighQuality = true;
+    bool NowQuality = true;
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        SetQuality();
     }
 
     // Update is called once per frame
@@ -20,6 +19,10 @@ public class BackLight : MonoBehaviour
     {
         Scene nowScene = SceneManager.GetActiveScene();
 
+        if(NowQuality != HighQuality)
+        {
+            SetQuality();
+        }  
         switch (nowScene.name)
         {
             case "LoadingScreen":
@@ -30,15 +33,15 @@ public class BackLight : MonoBehaviour
     }
     void SetQuality()
     {
-        Light2D = transform.GetChild(0).gameObject;
-
         if (HighQuality)
         {
-            Light2D.GetComponent<HardLight2D>().filteringSettings.layerMask = (1 << 6) | (1 << 7) | (1 << 9) | (1 << 10);
+            gameObject.GetComponent<HardLight2D>().filteringSettings.layerMask = (1 << 6) | (1 << 7) | (1 << 9) | (1 << 10);
+            NowQuality = true;
         }
         else
         {
-            Light2D.GetComponent<HardLight2D>().filteringSettings.layerMask = (1 << 6) | (1 << 9);
+            gameObject.GetComponent<HardLight2D>().filteringSettings.layerMask = (1 << 6) | (1 << 9);
+            NowQuality = false;
         }
     }
 }
