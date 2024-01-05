@@ -28,8 +28,8 @@ RectTransform:
   m_GameObject: {fileID: 7271533157682183109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -346,4 +346,4 @@ PolygonCollider2D:
       - {x: 207.80515, y: 50.906815}
       - {x: 192.17023, y: 47.706345}
       - {x: 178.54962, y: 37.78067}
-  m_UseDelaunayMesh: 0
+  m_UseDelaunayMesh: 1
