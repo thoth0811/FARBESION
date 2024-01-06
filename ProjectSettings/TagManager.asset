@@ -11,6 +11,7 @@ TagManager:
   - BallsBasket
   - Number
   - BackLight
+  - CanvasGroup
   layers:
   - Default
   - TransparentFX
