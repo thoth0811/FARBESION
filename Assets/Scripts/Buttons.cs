@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
-    public GameObject CanvasGroup, BackLight;
+    GameObject MainCamera, BackLight;
     public float time = 1.0f;
     bool SetBtnOn, BackBtnOn = false;
     // Start is called before the first frame update
     void Start()
     {
         BackLight = GameObject.FindWithTag("BackLight");
-        CanvasGroup = GameObject.FindWithTag("CanvasGroup");
+        MainCamera = GameObject.FindWithTag("MainCamera");
     }
 
     // Update is called once per frame
@@ -20,16 +20,16 @@ public class Buttons : MonoBehaviour
     {
         if (SetBtnOn)
         {
-            CanvasGroup.transform.position = Vector3.MoveTowards(CanvasGroup.transform.position, new Vector3(0, 12, 0), (12 / time) * Time.deltaTime);
-            if (CanvasGroup.transform.position == new Vector3(0, 12, 0))
+            MainCamera.transform.position = Vector3.MoveTowards(MainCamera.transform.position, new Vector3(0, -12, -10), (12 / time) * Time.deltaTime);
+            if (MainCamera.transform.position == new Vector3(0, -12, -10))
             {
                 SetBtnOn = false;
             }
         }
         if (BackBtnOn)
         {
-            CanvasGroup.transform.position = Vector3.MoveTowards(CanvasGroup.transform.position, new Vector3(0, 0, 0), (12 / time) * Time.deltaTime);
-            if (CanvasGroup.transform.position == new Vector3(0, 0, 0))
+            MainCamera.transform.position = Vector3.MoveTowards(MainCamera.transform.position, new Vector3(0, 0, -10), (12 / time) * Time.deltaTime);
+            if (MainCamera.transform.position == new Vector3(0, 0, -10))
             {
                 BackBtnOn = false;
             }
@@ -64,5 +64,17 @@ public class Buttons : MonoBehaviour
     public void LOWButton()
     {
         BackLight.GetComponent<BackLight>().HighQuality = false;
+    }
+    public void _3Button()
+    {
+        BackLight.GetComponent<BackLight>().LightSize = 3;
+    }
+    public void _5Button()
+    {
+        BackLight.GetComponent<BackLight>().LightSize = 5;
+    }
+    public void _7Button()
+    {
+        BackLight.GetComponent<BackLight>().LightSize = 7;
     }
 }

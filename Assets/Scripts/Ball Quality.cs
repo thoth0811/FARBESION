@@ -7,6 +7,7 @@ public class BallQuality : MonoBehaviour
     bool HighQuality = true;
     GameObject BackLight;
     GameObject Light2D;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,11 @@ public class BallQuality : MonoBehaviour
     {
         if (HighQuality != BackLight.GetComponent<BackLight>().HighQuality)
         {
-            SetQuality(false);
+            SetQuality(BackLight.GetComponent<BackLight>().HighQuality);
+        }
+        if(Light2D.GetComponent<HardLight2D>().Range != BackLight.GetComponent<BackLight>().LightSize)
+        {
+            Light2D.GetComponent<HardLight2D>().Range = BackLight.GetComponent<BackLight>().LightSize;
         }
     }
 
@@ -28,10 +33,13 @@ public class BallQuality : MonoBehaviour
         if (Q)
         {
             Light2D.GetComponent<HardLight2D>().filteringSettings.layerMask = (1 << 6) | (1 << 7) | (1 << 9) | (1 << 10);
+            HighQuality = true;
         }
         else
         {
             Light2D.GetComponent<HardLight2D>().filteringSettings.layerMask = (1 << 6) | (1 << 9);
+            HighQuality = false;
+            HighQuality = false;
         }
     }
 }

@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   x: 8
-  y: -8
+  y: -6
   X_WaveSize: 4
   Y_WaveSize: 2
   HighQuality: 0

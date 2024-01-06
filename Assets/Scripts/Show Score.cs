@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShowScore : MonoBehaviour
 {
     GameObject SpawnPoint;
-    int[] ScorePos = {330, 400, 470, 540, 610};
+    int[] ScorePos = { 310, 350, 390, 430, 470 };
     public int[] ScoreSolo = {0, 0, 0, 0, 0};
     int Score = 0;
     public GameObject Num0, Num1, Num2, Num3, Num4, Num5, Num6, Num7, Num8, Num9;
@@ -31,19 +31,6 @@ public class ShowScore : MonoBehaviour
         foreach (GameObject num in GameNums)
         {
             Destroy(num, 0f);
-        }
-    }
-
-    public void SetParent()
-    {
-        int i = 0;
-        GameObject[] GameNums = GameObject.FindGameObjectsWithTag("Number");
-        foreach (GameObject num in GameNums)
-        {
-            num.transform.SetParent(this.transform);
-            num.transform.localPosition = new Vector3(ScorePos[i], 230, 0);
-            num.transform.localScale = new Vector3(1, 1, 1);
-            i++;
         }
     }
 
@@ -77,11 +64,10 @@ public class ShowScore : MonoBehaviour
     {
         ClearNums();
         NumCut();
-        Instantiate(SetNum(ScoreSolo[0]), new Vector3(ScorePos[0], 230, 0), Quaternion.identity).transform.SetParent(this.transform, false);
-        Instantiate(SetNum(ScoreSolo[1]), new Vector3(ScorePos[1], 230, 0), Quaternion.identity).transform.SetParent(this.transform, false);
-        Instantiate(SetNum(ScoreSolo[2]), new Vector3(ScorePos[2], 230, 0), Quaternion.identity).transform.SetParent(this.transform, false);
-        Instantiate(SetNum(ScoreSolo[3]), new Vector3(ScorePos[3], 230, 0), Quaternion.identity).transform.SetParent(this.transform, false);
-        Instantiate(SetNum(ScoreSolo[4]), new Vector3(ScorePos[4], 230, 0), Quaternion.identity).transform.SetParent(this.transform, false);
-        //SetParent();
+        Instantiate(SetNum(ScoreSolo[0]), new Vector3(ScorePos[0], 300, 0), Quaternion.identity).transform.SetParent(this.transform, false);
+        Instantiate(SetNum(ScoreSolo[1]), new Vector3(ScorePos[1], 300, 0), Quaternion.identity).transform.SetParent(this.transform, false);
+        Instantiate(SetNum(ScoreSolo[2]), new Vector3(ScorePos[2], 300, 0), Quaternion.identity).transform.SetParent(this.transform, false);
+        Instantiate(SetNum(ScoreSolo[3]), new Vector3(ScorePos[3], 300, 0), Quaternion.identity).transform.SetParent(this.transform, false);
+        Instantiate(SetNum(ScoreSolo[4]), new Vector3(ScorePos[4], 300, 0), Quaternion.identity).transform.SetParent(this.transform, false);
     }
 }

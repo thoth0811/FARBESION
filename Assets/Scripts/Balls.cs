@@ -101,15 +101,15 @@ public class Balls : MonoBehaviour
 
     void CheckBallOut()
     {
-        if(this.transform.position.x > 3)
+        if(this.transform.position.x > 2.9f - 0.15f * Level)
         {
             this.transform.position = new Vector3(2.9f - 0.15f * Level, this.transform.position.y, 0);
         }
-        if (this.transform.position.x < -3)
+        if (this.transform.position.x < -2.9f + 0.15f * Level)
         {
             this.transform.position = new Vector3(-2.9f + 0.15f * Level, this.transform.position.y, 0);
         }
-        if (this.transform.position.y < -4.5f)
+        if (this.transform.position.y < -4.4f + 0.15f * Level)
         {
             this.transform.position = new Vector3(this.transform.position.x, -4.4f + 0.15f * Level, 0);
         }
