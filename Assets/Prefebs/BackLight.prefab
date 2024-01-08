@@ -141,8 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfa8906611ae994ea35a3786d3075c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 8
+  x: 7
   y: -6
-  X_WaveSize: 4
-  Y_WaveSize: 2
+  X_WaveSize: 3
+  Y_WaveSize: 0
+  LightSize: 3
   HighQuality: 0
+  IsPause: 0

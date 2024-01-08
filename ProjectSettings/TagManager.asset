@@ -11,7 +11,9 @@ TagManager:
   - BallsBasket
   - Number
   - BackLight
-  - CanvasGroup
+  - Paused Text
+  - Pause Menu
+  - Main Canvas
   layers:
   - Default
   - TransparentFX

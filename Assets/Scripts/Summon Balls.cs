@@ -34,9 +34,9 @@ public class SummonBalls : MonoBehaviour
             if (!isSampleSpawn)
             {
                 SpawnSample();
-                KeyInput();
             }
-        }
+            KeyInput();
+        }      
     }
     void RemoveSample()
     {

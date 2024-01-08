@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class Buttons : MonoBehaviour
 {
     GameObject MainCamera, BackLight;
-    public float time = 1.0f;
     bool SetBtnOn, BackBtnOn = false;
+    Scene nowScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +20,7 @@ public class Buttons : MonoBehaviour
     {
         if (SetBtnOn)
         {
-            MainCamera.transform.position = Vector3.MoveTowards(MainCamera.transform.position, new Vector3(0, -12, -10), (12 / time) * Time.deltaTime);
+            MainCamera.transform.position = Vector3.MoveTowards(MainCamera.transform.position, new Vector3(0, -12, -10), 12 * Time.unscaledDeltaTime);
             if (MainCamera.transform.position == new Vector3(0, -12, -10))
             {
                 SetBtnOn = false;
@@ -28,7 +28,7 @@ public class Buttons : MonoBehaviour
         }
         if (BackBtnOn)
         {
-            MainCamera.transform.position = Vector3.MoveTowards(MainCamera.transform.position, new Vector3(0, 0, -10), (12 / time) * Time.deltaTime);
+            MainCamera.transform.position = Vector3.MoveTowards(MainCamera.transform.position, new Vector3(0, 0, -10), 12 * Time.unscaledDeltaTime);
             if (MainCamera.transform.position == new Vector3(0, 0, -10))
             {
                 BackBtnOn = false;
