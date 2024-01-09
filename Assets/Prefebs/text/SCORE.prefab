@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3969184202240796359}
   - component: {fileID: 4846859128326554773}
   - component: {fileID: 799492949024248098}
+  - component: {fileID: 639000361901796123}
   m_Layer: 9
   m_Name: SCORE
   m_TagString: Untagged
@@ -268,3 +269,15 @@ PolygonCollider2D:
       - {x: 129.2149, y: -30.897247}
       - {x: 177.71826, y: -31.025787}
   m_UseDelaunayMesh: 1
+--- !u!114 &639000361901796123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906060504657060854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9e5a39d12b2a44a9d5ce860fdc0949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

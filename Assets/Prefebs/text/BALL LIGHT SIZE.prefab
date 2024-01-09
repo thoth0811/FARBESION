@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3661362967222148254}
   - component: {fileID: 7645246064836032359}
   - component: {fileID: 4713356419234970727}
+  - component: {fileID: 6188578943808035975}
   m_Layer: 5
   m_Name: BALL LIGHT SIZE
   m_TagString: Untagged
@@ -320,4 +321,16 @@ PolygonCollider2D:
       - {x: -427.0136, y: -30.984848}
       - {x: -454.90338, y: -30.937485}
       - {x: -454.95203, y: 51.007923}
-  m_UseDelaunayMesh: 0
+  m_UseDelaunayMesh: 1
+--- !u!114 &6188578943808035975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342400592424432986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9e5a39d12b2a44a9d5ce860fdc0949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: d9933f0047c098c42ba41c40df7152eb
+  m_OcclusionCullingData: {fileID: 36300000, guid: efa458bca74f95448917dcd2a5a9838e, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cffa2a9f0e1d89542b9e7a8c1e789b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!43 &529655545
+--- !u!43 &1794890947
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -424,10 +424,14 @@ PrefabInstance:
     - target: {fileID: 1987129318483145368, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 529655545}
+      objectReference: {fileID: 1794890947}
     - target: {fileID: 3016330716416875762, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: m_Name
       value: BackLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016330716416875762, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7559969684976344891, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: m_LocalPosition.x
