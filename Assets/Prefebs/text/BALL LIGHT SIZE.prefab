@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7645246064836032359}
   - component: {fileID: 4713356419234970727}
   - component: {fileID: 6188578943808035975}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: BALL LIGHT SIZE
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 public class BackLight : MonoBehaviour
 {
     GameObject MainCamera;
-    int x = 7, y = -6, X_WaveSize = 3, Y_WaveSize = 0;
+    int x = 7, y = -6, X_WaveSize = 3;
     public int LightSize = 3;
-    public bool HighQuality = true, IsPause = false;
+    public bool HighQuality = true, IsPause = false, CanPause = true, BLMoveOn = true;
     bool NowQuality = true;
-    float time = 0f;
+    float time = 0f, posx = 0f, posy = 0f;
     Scene nowScene;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,10 @@ public class BackLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.unscaledDeltaTime;
+        if(BLMoveOn)
+        {
+            time += Time.unscaledDeltaTime;
+        }
         if (nowScene != SceneManager.GetActiveScene())
         {
             nowScene = SceneManager.GetActiveScene();
@@ -38,8 +41,8 @@ public class BackLight : MonoBehaviour
             SceneManager.LoadScene("MainScreen");
         }
         CheckPause();
-        float posx = MainCamera.transform.position.x + x + X_WaveSize * Mathf.Sin(time);
-        float posy = MainCamera.transform.position.y + y + Y_WaveSize * Mathf.Sin(time);
+        posx = MainCamera.transform.position.x + x + X_WaveSize * Mathf.Sin(time);
+        posy = MainCamera.transform.position.y + y;
         gameObject.transform.position = new Vector3(posx, posy, 0);
     }
     void SetQuality()
@@ -61,9 +64,10 @@ public class BackLight : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (!IsPause)
+                if (!IsPause && CanPause)
                 {
                     IsPause = true;
+                    CanPause = false;
                 }
             }
         }

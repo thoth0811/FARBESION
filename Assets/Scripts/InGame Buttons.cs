@@ -20,18 +20,23 @@ public class InGameButtons : MonoBehaviour
     {
         if (PauseMove)
         {
-            Menu.transform.position = Vector3.MoveTowards(Menu.transform.position, new Vector3(4, 0, 0), 40 * Time.unscaledDeltaTime);
+            Menu.transform.position = Vector3.MoveTowards(Menu.transform.position, new Vector3(4, 0, 0), 10 * Time.unscaledDeltaTime);
             if (Menu.transform.position == new Vector3(4, 0, 0))
             {
+                BackLight.GetComponent<BackLight>().CanPause = true;
                 PauseMove = false;
             }
         }
     }
     public void ResumeButton()
     {
-        BackLight.GetComponent<BackLight>().IsPause = false;
-        PauseText.transform.GetChild(0).gameObject.SetActive(false);
-        PauseMove = true;
+        if (BackLight.GetComponent<BackLight>().IsPause && BackLight.GetComponent<BackLight>().CanPause)
+        {
+            BackLight.GetComponent<BackLight>().CanPause = false;
+            BackLight.GetComponent<BackLight>().IsPause = false;
+            PauseText.transform.GetChild(0).gameObject.SetActive(false);
+            PauseMove = true;
+        }
     }
     public void ExitButton()
     {

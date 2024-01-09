@@ -77,4 +77,12 @@ public class Buttons : MonoBehaviour
     {
         BackLight.GetComponent<BackLight>().LightSize = 7;
     }
+    public void OnButton()
+    {
+        BackLight.GetComponent<BackLight>().BLMoveOn = true;
+    }
+    public void OffButton()
+    {
+        BackLight.GetComponent<BackLight>().BLMoveOn = false;
+    }
 }
