@@ -27,6 +27,16 @@ public class InGameButtons : MonoBehaviour
                 PauseMove = false;
             }
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (BackLight.GetComponent<BackLight>().IsPause && BackLight.GetComponent<BackLight>().CanPause)
+            {
+                BackLight.GetComponent<BackLight>().CanPause = false;
+                BackLight.GetComponent<BackLight>().IsPause = false;
+                PauseText.transform.GetChild(0).gameObject.SetActive(false);
+                PauseMove = true;
+            }
+        }
     }
     public void ResumeButton()
     {
