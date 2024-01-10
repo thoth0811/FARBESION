@@ -13,15 +13,9 @@ public class Balls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SummonTime = Time.time;
         SpawnPoint = GameObject.FindWithTag("SpawnPoint");
         BackLight = GameObject.FindWithTag("BackLight");
-        BounceSound.volume = BounceSoundVolume;
-    }
-
-    void OnEnable()
-    {
-        SummonTime = Time.time;
-        isMerge = false;
     }
 
     // Update is called once per frame
@@ -35,6 +29,7 @@ public class Balls : MonoBehaviour
         {
             Time.timeScale = 1.0f;
         }
+        BounceSound.volume = BounceSoundVolume;
         CheckBallOut();
 
     }
@@ -53,8 +48,8 @@ public class Balls : MonoBehaviour
                     AddScore();
                     ShowParticle(contact);
                 }
-                gameObject.SetActive(false);
-                col.gameObject.SetActive(false);
+                Destroy(gameObject, 0f);
+                Destroy(col.gameObject, 0f);
                 return;
             }
         }
@@ -92,7 +87,7 @@ public class Balls : MonoBehaviour
                 GameObject[] GameBalls = GameObject.FindGameObjectsWithTag("Balls");
                 foreach (GameObject ball in GameBalls)
                 {
-                    ball.SetActive(false);
+                    Destroy(ball, 0f);
                 }
                 SpawnPoint.GetComponent<SummonBalls>().Score = 0;
             }
