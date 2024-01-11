@@ -5,10 +5,12 @@ using UnityEngine;
 public class Balls : MonoBehaviour
 {
     public int Level;
-    float SummonTime = 0, TouchDeadLineTime = 0, DeadLineTime = 3f, BounceSoundVolume = 0.1f, BounceSoundSpeed = 1.5f;
+    public float SummonTime = 0;
     public ParticleSystem MergeParticle;
     public AudioSource BounceSound;
-    bool isMerge = false;
+    public bool isMerge = false;
+    int TouchDeadLineCount = 0;
+    float TouchDeadLineTime = 0, DeadLineTime = 1f, BounceSoundVolume = 0.1f, BounceSoundSpeed = 1.5f;
     GameObject SpawnPoint, BackLight;
     // Start is called before the first frame update
     void Start()
@@ -17,26 +19,25 @@ public class Balls : MonoBehaviour
         BackLight = GameObject.FindWithTag("BackLight");
         BounceSound.volume = BounceSoundVolume;
     }
-
     void OnEnable()
     {
+        TouchDeadLineCount = 0;
         SummonTime = Time.time;
         isMerge = false;
+        BallPop();
     }
-
     // Update is called once per frame
     void Update()
     {
-        if (BackLight.GetComponent<BackLight>().IsPause)
+        if (Time.timeScale == 1.0f  && BackLight.GetComponent<BackLight>().IsPause)
         {
             Time.timeScale = 0f;
         }
-        else
+        if (Time.timeScale == 0f && !BackLight.GetComponent<BackLight>().IsPause)
         {
             Time.timeScale = 1.0f;
         }
         CheckBallOut();
-
     }
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -44,43 +45,40 @@ public class Balls : MonoBehaviour
         {
             if (isMerge == false && col.gameObject.GetComponent<Balls>().isMerge == false)
             {
-                isMerge = true;
-                col.gameObject.GetComponent<Balls>().isMerge = true;
-                if (col.gameObject.GetComponent<Balls>().SummonTime < SummonTime)
+                if (col.gameObject.GetComponent<Balls>().SummonTime < this.SummonTime)
                 {
+                    isMerge = true;
+                    col.gameObject.GetComponent<Balls>().isMerge = true;
                     ContactPoint2D contact = col.contacts[0];
                     SpawnPoint.GetComponent<SummonBalls>().Summon(Level + 1, new Vector3(contact.point.x, contact.point.y, 0));
                     AddScore();
                     ShowParticle(contact);
+                    col.gameObject.SetActive(false);
+                    gameObject.SetActive(false);
                 }
-                gameObject.SetActive(false);
-                col.gameObject.SetActive(false);
                 return;
             }
         }
-        if (col.gameObject.CompareTag("Balls") && col.gameObject.GetComponent<Balls>().Level != this.Level)
+        if ((col.gameObject.CompareTag("Balls") && col.gameObject.GetComponent<Balls>().Level != this.Level) || col.gameObject.CompareTag("BallsBasket"))
         {
             if (col.relativeVelocity.magnitude > BounceSoundSpeed) {
-                BounceSound.Play();
+                Invoke("PlayBounce", 0f);
             }
-        }
-    
-        if (col.gameObject.CompareTag("BallsBasket"))
-        {
-            if (col.relativeVelocity.magnitude > BounceSoundSpeed) {
-                BounceSound.Play();
-            }
-        }
-        if (col.gameObject.CompareTag("DeadLine"))
-        {
-                TouchDeadLineTime = Time.time + DeadLineTime;
         }
     }
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("DeadLine"))
         {
-            TouchDeadLineTime = Time.time + DeadLineTime;
+            if(TouchDeadLineCount == 0)
+            {
+                TouchDeadLineCount++;
+                TouchDeadLineTime = Time.time + DeadLineTime;
+            }
+            else
+            {
+                GameOver();
+            }
         }
     }
     void OnTriggerStay2D(Collider2D col)
@@ -89,12 +87,7 @@ public class Balls : MonoBehaviour
         {
             if(Time.time >= TouchDeadLineTime)
             {
-                GameObject[] GameBalls = GameObject.FindGameObjectsWithTag("Balls");
-                foreach (GameObject ball in GameBalls)
-                {
-                    ball.SetActive(false);
-                }
-                SpawnPoint.GetComponent<SummonBalls>().Score = 0;
+                GameOver();
             }
         }
     }
@@ -128,5 +121,30 @@ public class Balls : MonoBehaviour
             this.transform.position = new Vector3(this.transform.position.x, -4.4f + 0.15f * Level, 0);
         }
     }
-}
+    void GameOver()
+    {
+        GameObject[] GameBalls = GameObject.FindGameObjectsWithTag("Balls");
+        foreach (GameObject ball in GameBalls)
+        {
+            ball.SetActive(false);
+        }
+        SpawnPoint.GetComponent<SummonBalls>().Score = 0;
+    }
+    void BallPop()
+    {
+        GameObject[] GameBalls = GameObject.FindGameObjectsWithTag("Balls");
+        foreach (GameObject ball in GameBalls)
+        {
 
+            if (Vector2.Distance(ball.transform.position, gameObject.transform.position) < (0.3f + 0.3f * (ball.GetComponent<Balls>().Level + Level)))
+            {
+                Rigidbody2D ballRb = ball.GetComponent<Rigidbody2D>();
+                ballRb.AddForce((ball.transform.position - gameObject.transform.position)*0.5f, ForceMode2D.Impulse);
+            }
+        }
+    }
+    void PlayBounce()
+    {
+        BounceSound.Play();
+    }
+}

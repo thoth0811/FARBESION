@@ -26,11 +26,11 @@ public class SummonBalls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (BackLight.GetComponent<BackLight>().IsPause)
+        if (Time.timeScale == 1.0f  && BackLight.GetComponent<BackLight>().IsPause)
         {
             Time.timeScale = 0f;
         }
-        else
+        if (!BackLight.GetComponent<BackLight>().IsPause)
         {
             Time.timeScale = 1.0f;
             time += Time.deltaTime;
@@ -39,7 +39,7 @@ public class SummonBalls : MonoBehaviour
                 SpawnSample();
             }
             KeyInput();
-        }      
+        }    
     }
     void RemoveSample()
     {
