@@ -38,7 +38,7 @@ public class Buttons : MonoBehaviour
 
     public void StartButton()
     {
-        SceneManager.LoadScene("GameScreen");
+        SceneManager.LoadScene("GameLoadingScreen");
     }
 
     public void SettingButton()

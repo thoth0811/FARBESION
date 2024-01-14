@@ -80,8 +80,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1240756019
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 1, b: 0.018793583, a: 1}
@@ -169,8 +169,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level: 6
+  SummonTime: 0
   MergeParticle: {fileID: 7749716249370073715, guid: 9eca9ab6027013e49b45a1c3a3ab03ce, type: 3}
   BounceSound: {fileID: 7541773947110863212}
+  isMerge: 0
 --- !u!82 &7541773947110863212
 AudioSource:
   m_ObjectHideFlags: 0

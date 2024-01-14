@@ -11,6 +11,7 @@ public class Balls : MonoBehaviour
     public bool isMerge = false;
     int TouchDeadLineCount = 0;
     float TouchDeadLineTime = 0, DeadLineTime = 1f, BounceSoundVolume = 0.1f, BounceSoundSpeed = 1.5f;
+    bool GameOver = false;
     GameObject SpawnPoint, BackLight;
     // Start is called before the first frame update
     void Start()
@@ -29,11 +30,16 @@ public class Balls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale == 1.0f  && BackLight.GetComponent<BackLight>().IsPause)
+        if (Time.timeScale == 1.0f && BackLight.GetComponent<BackLight>().IsPause && !GameOver)
         {
             Time.timeScale = 0f;
         }
-        if (Time.timeScale == 0f && !BackLight.GetComponent<BackLight>().IsPause)
+        if (BackLight.GetComponent<BackLight>().GameOver && !GameOver)
+        {
+            GameOver = true;
+            Time.timeScale = 0f;
+        }
+        if (Time.timeScale == 0f && !BackLight.GetComponent<BackLight>().IsPause && !GameOver)
         {
             Time.timeScale = 1.0f;
         }
@@ -77,7 +83,7 @@ public class Balls : MonoBehaviour
             }
             else
             {
-                GameOver();
+                SetGameOver();
             }
         }
     }
@@ -87,7 +93,7 @@ public class Balls : MonoBehaviour
         {
             if(Time.time >= TouchDeadLineTime)
             {
-                GameOver();
+                SetGameOver();
             }
         }
     }
@@ -121,14 +127,9 @@ public class Balls : MonoBehaviour
             this.transform.position = new Vector3(this.transform.position.x, -4.4f + 0.15f * Level, 0);
         }
     }
-    void GameOver()
+    void SetGameOver()
     {
-        GameObject[] GameBalls = GameObject.FindGameObjectsWithTag("Balls");
-        foreach (GameObject ball in GameBalls)
-        {
-            ball.SetActive(false);
-        }
-        SpawnPoint.GetComponent<SummonBalls>().Score = 0;
+        BackLight.GetComponent<BackLight>().GameOver = true;
     }
     void BallPop()
     {

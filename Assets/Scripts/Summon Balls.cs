@@ -11,7 +11,7 @@ public class SummonBalls : MonoBehaviour
     float SpawnCool = 0.7f, NextSpawn = 0, time = 0;
     Queue<int> NextBallsNum = new Queue<int>(3);
     int[] NextBall = new int[3];
-    bool isSampleSpawn = false;
+    bool isSampleSpawn = false, GameOver = false;
     GameObject Ball, BackLight;
     // Start is called before the first frame update
     void Start()
@@ -26,11 +26,16 @@ public class SummonBalls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale == 1.0f  && BackLight.GetComponent<BackLight>().IsPause)
+        if (Time.timeScale == 1.0f  && BackLight.GetComponent<BackLight>().IsPause && !GameOver)
         {
             Time.timeScale = 0f;
         }
-        if (!BackLight.GetComponent<BackLight>().IsPause)
+        if (BackLight.GetComponent<BackLight>().GameOver && !GameOver)
+        {
+            GameOver = true;
+            Time.timeScale = 0f;
+        }
+        if (!BackLight.GetComponent<BackLight>().IsPause && !GameOver)
         {
             Time.timeScale = 1.0f;
             time += Time.deltaTime;

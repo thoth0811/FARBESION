@@ -56,7 +56,7 @@ MonoBehaviour:
     useLayerMask: 1
     layerMask:
       serializedVersion: 2
-      m_Bits: 1728
+      m_Bits: 1984
   optimizationSettings:
     CalculateOnlyOnce: 0
     OptimizedRaycasting: 1
@@ -141,10 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfa8906611ae994ea35a3786d3075c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 7
-  y: -6
-  X_WaveSize: 3
-  Y_WaveSize: 0
   LightSize: 3
   HighQuality: 0
   IsPause: 0
+  CanPause: 1
+  BLMoveOn: 1
+  GameOver: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallQuality : MonoBehaviour
 {
-    bool HighQuality = true;
+    bool HighQuality = false;
     GameObject BackLight, Light2D;
     
     // Start is called before the first frame update

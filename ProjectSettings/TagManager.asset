@@ -14,6 +14,7 @@ TagManager:
   - Paused Text
   - Pause Menu
   - Main Canvas
+  - GameOver
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - UI
   - Balls Basket
   - Balls
-  - 
+  - GameOverText
   - Text
   - BallsSample
   - 
@@ -59,4 +60,10 @@ TagManager:
     locked: 0
   - name: MergeParticle
     uniqueID: 1902997657
+    locked: 0
+  - name: game
+    uniqueID: 390641333
+    locked: 0
+  - name: GameOver
+    uniqueID: 2424407945
     locked: 0

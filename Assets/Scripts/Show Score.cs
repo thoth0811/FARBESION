@@ -64,10 +64,16 @@ public class ShowScore : MonoBehaviour
     {
         ClearNums();
         NumCut();
-        Instantiate(SetNum(ScoreSolo[0]), new Vector3(ScorePos[0], 300, 0), Quaternion.identity).transform.SetParent(this.transform, false);
-        Instantiate(SetNum(ScoreSolo[1]), new Vector3(ScorePos[1], 300, 0), Quaternion.identity).transform.SetParent(this.transform, false);
-        Instantiate(SetNum(ScoreSolo[2]), new Vector3(ScorePos[2], 300, 0), Quaternion.identity).transform.SetParent(this.transform, false);
-        Instantiate(SetNum(ScoreSolo[3]), new Vector3(ScorePos[3], 300, 0), Quaternion.identity).transform.SetParent(this.transform, false);
-        Instantiate(SetNum(ScoreSolo[4]), new Vector3(ScorePos[4], 300, 0), Quaternion.identity).transform.SetParent(this.transform, false);
+        GameObject Num = null;
+        Num = Instantiate(SetNum(ScoreSolo[0]), new Vector3(ScorePos[0], 300, 0), Quaternion.identity);
+        Num.transform.SetParent(this.transform, false);
+        Num = Instantiate(SetNum(ScoreSolo[1]), new Vector3(ScorePos[1], 300, 0), Quaternion.identity);
+        Num.transform.SetParent(this.transform, false);
+        Num = Instantiate(SetNum(ScoreSolo[2]), new Vector3(ScorePos[2], 300, 0), Quaternion.identity);
+        Num.transform.SetParent(this.transform, false);
+        Num = Instantiate(SetNum(ScoreSolo[3]), new Vector3(ScorePos[3], 300, 0), Quaternion.identity);
+        Num.transform.SetParent(this.transform, false);
+        Num = Instantiate(SetNum(ScoreSolo[4]), new Vector3(ScorePos[4], 300, 0), Quaternion.identity);
+        Num.transform.SetParent(this.transform, false);
     }
 }

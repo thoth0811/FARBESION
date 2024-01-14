@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cffa2a9f0e1d89542b9e7a8c1e789b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!43 &1794890947
+--- !u!43 &1545140111
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -407,15 +407,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 679557124199587657, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: position.x
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 679557124199587657, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: position.y
-      value: -8
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 679557124199587657, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: TransformIsDirty
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 679557124199587657, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: ContactFilter.layerMask.m_Bits
@@ -424,7 +424,7 @@ PrefabInstance:
     - target: {fileID: 1987129318483145368, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1794890947}
+      objectReference: {fileID: 1545140111}
     - target: {fileID: 3016330716416875762, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: m_Name
       value: BackLight
@@ -435,11 +435,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7559969684976344891, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7559969684976344891, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 7559969684976344891, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: m_LocalPosition.z

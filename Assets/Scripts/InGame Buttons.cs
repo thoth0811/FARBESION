@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class InGameButtons : MonoBehaviour
 {
-    GameObject Menu, PauseText, BackLight;
+    GameObject Menu, PauseText, BackLight, GameOver;
     bool PauseMove = false;
     // Start is called before the first frame update
     void Start()
@@ -13,6 +13,7 @@ public class InGameButtons : MonoBehaviour
         BackLight = GameObject.FindWithTag("BackLight");
         PauseText = GameObject.FindWithTag("Paused Text");
         Menu = GameObject.FindWithTag("Pause Menu");
+        GameOver = GameObject.FindWithTag("GameOver");
     }
 
     // Update is called once per frame
@@ -26,6 +27,10 @@ public class InGameButtons : MonoBehaviour
                 BackLight.GetComponent<BackLight>().CanPause = true;
                 PauseMove = false;
             }
+        }
+        if (BackLight.GetComponent<BackLight>().GameOver)
+        {
+            GameOver.transform.position = Vector3.MoveTowards(GameOver.transform.position, new Vector3(0, 0, 0), 0.5f * Time.unscaledDeltaTime);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -51,5 +56,9 @@ public class InGameButtons : MonoBehaviour
     public void ExitButton()
     {
         SceneManager.LoadScene("MainScreen");
+    }
+    public void NewGameButton()
+    {
+        SceneManager.LoadScene("GameLoadingScreen");
     }
 }
