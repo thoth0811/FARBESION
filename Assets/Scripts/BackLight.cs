@@ -78,19 +78,19 @@ public class BackLight : MonoBehaviour
     {
         if( 0 < time  && time <= 12)
         {
-            gameObject.transform.position = new Vector3(11f, time - 6f, 0);
+            gameObject.transform.position = MainCamera.transform.position + new Vector3(11f, time - 6f, 0);
         }
         if( 12 < time  && time <= 34)
         {
-            gameObject.transform.position = new Vector3(23f - time, 6f, 0);
+            gameObject.transform.position = MainCamera.transform.position + new Vector3(23f - time, 6f, 0);
         }
         if( 34 < time  && time <= 46)
         {
-            gameObject.transform.position = new Vector3(-11f, 40f - time, 0);
+            gameObject.transform.position = MainCamera.transform.position + new Vector3(-11f, 40f - time, 0);
         }
         if( 46 < time  && time <= 68)
         {
-            gameObject.transform.position = new Vector3(time - 57f, -6f, 0);
+            gameObject.transform.position = MainCamera.transform.position + new Vector3(time - 57f, -6f, 0);
         }
         if(time > 68)
         {
