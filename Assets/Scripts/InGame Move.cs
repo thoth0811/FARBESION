@@ -5,7 +5,8 @@ using UnityEngine;
 public class InGameMove : MonoBehaviour
 {
     GameObject Menu, BackLight;
-    bool PauseMove = false;
+    public AudioSource GameOverSound;
+    bool PauseMove = false, GameOver = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,11 @@ public class InGameMove : MonoBehaviour
         {
             transform.GetChild(0).gameObject.SetActive(true);
             PauseMove = true;
+        }
+        if (BackLight.GetComponent<BackLight>().GameOver && !GameOver)
+        {
+            GameOver = true;
+            GameOverSound.Play();
         }
     }
 }

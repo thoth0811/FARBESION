@@ -10,7 +10,7 @@ public class Balls : MonoBehaviour
     public AudioSource BounceSound;
     public bool isMerge = false;
     int TouchDeadLineCount = 0;
-    float TouchDeadLineTime = 0, DeadLineTime = 1f, BounceSoundVolume = 0.1f, BounceSoundSpeed = 1.5f;
+    float TouchDeadLineTime = 0, DeadLineTime = 1f, BounceSoundVolume = 0.1f, BounceSoundSpeed = 2f;
     bool GameOver = false;
     GameObject SpawnPoint, BackLight;
     // Start is called before the first frame update
