@@ -83,7 +83,14 @@ public class Balls : MonoBehaviour
             }
             else
             {
-                SetGameOver();
+                if (Time.time < TouchDeadLineTime)
+                {
+                    TouchDeadLineTime = Time.time + DeadLineTime;
+                }
+                else
+                {
+                    SetGameOver();
+                }
             }
         }
     }
