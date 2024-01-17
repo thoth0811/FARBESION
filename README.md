@@ -4,4 +4,4 @@
 
 유니티 버젼 2022.3.16f
 
-exeFile 압축 풀고 BallGame 실행
+설치 링크 : https://docs.google.com/uc?export=download&id=1vZFrZFg_4nc3Y5lBdxjjBvKdcVEdkHT1&confirm=t
