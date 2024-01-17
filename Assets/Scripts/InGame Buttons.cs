@@ -45,6 +45,7 @@ public class InGameButtons : MonoBehaviour
     }
     public void ResumeButton()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         if (BackLight.GetComponent<BackLight>().IsPause && BackLight.GetComponent<BackLight>().CanPause)
         {
             BackLight.GetComponent<BackLight>().CanPause = false;
@@ -55,10 +56,12 @@ public class InGameButtons : MonoBehaviour
     }
     public void ExitButton()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         SceneManager.LoadScene("MainScreen");
     }
     public void NewGameButton()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         SceneManager.LoadScene("GameLoadingScreen");
     }
 }

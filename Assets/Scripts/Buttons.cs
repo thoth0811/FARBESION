@@ -38,51 +38,62 @@ public class Buttons : MonoBehaviour
 
     public void StartButton()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         SceneManager.LoadScene("GameLoadingScreen");
     }
 
     public void SettingButton()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         SetBtnOn = true;
     }
     public void ExitButton()
     {
-        #if UNITY_EDITOR
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
+#if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
-        #else
-                Application.Quit();
+#else
+        Application.Quit();
         #endif
     }
     public void BackButton()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         BackBtnOn = true;
     }
     public void HIGHButton()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         BackLight.GetComponent<BackLight>().HighQuality = true;
     }
     public void LOWButton()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         BackLight.GetComponent<BackLight>().HighQuality = false;
     }
     public void _3Button()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         BackLight.GetComponent<BackLight>().LightSize = 3;
     }
     public void _5Button()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         BackLight.GetComponent<BackLight>().LightSize = 5;
     }
     public void _7Button()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         BackLight.GetComponent<BackLight>().LightSize = 7;
     }
     public void OnButton()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         BackLight.GetComponent<BackLight>().BLMoveOn = true;
     }
     public void OffButton()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         BackLight.GetComponent<BackLight>().BLMoveOn = false;
     }
 }

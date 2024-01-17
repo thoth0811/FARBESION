@@ -8,7 +8,7 @@ public class SummonBalls : MonoBehaviour
     public List<GameObject> LLv1s = new List<GameObject>(), LLv2s = new List<GameObject>(), LLv3s = new List<GameObject>(), LLv4s = new List<GameObject>(), LLv1 = new List<GameObject>(), LLv2 = new List<GameObject>(), LLv3 = new List<GameObject>(), LLv4 = new List<GameObject>(), LLv5 = new List<GameObject>(), LLv6 = new List<GameObject>(), LLv7 = new List<GameObject>(), LLv8 = new List<GameObject>(), LLv9 = new List<GameObject>(), LLv10 = new List<GameObject>(), LLv11 = new List<GameObject>();
     public int Score = 0;
     int Lv1n = 10, Lv2n = 10, Lv3n = 10, Lv4n = 10, Lv5n = 10, Lv6n = 8, Lv7n = 8, Lv8n = 6, Lv9n = 6, Lv10n = 4, Lv11n = 4;
-    float SpawnCool = 0.7f, NextSpawn = 0, time = 0;
+    float SpawnCool = 1.5f, NextSpawn = 0, time = 0;
     Queue<int> NextBallsNum = new Queue<int>(3);
     int[] NextBall = new int[3];
     bool isSampleSpawn = false, GameOver = false;

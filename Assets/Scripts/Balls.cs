@@ -8,7 +8,7 @@ public class Balls : MonoBehaviour
     public float SummonTime = 0;
     public ParticleSystem MergeParticle;
     public AudioSource BounceSound;
-    public bool isMerge = false;
+    public bool isMerge = false, CheckWarning = false;
     int TouchDeadLineCount = 0;
     float TouchDeadLineTime = 0, DeadLineTime = 1f, BounceSoundVolume = 0.1f, BounceSoundSpeed = 2f;
     bool GameOver = false;
@@ -25,6 +25,7 @@ public class Balls : MonoBehaviour
         TouchDeadLineCount = 0;
         SummonTime = Time.time;
         isMerge = false;
+        CheckWarning = false;
         BallPop();
     }
     // Update is called once per frame
@@ -69,6 +70,10 @@ public class Balls : MonoBehaviour
         {
             if (col.relativeVelocity.magnitude > BounceSoundSpeed) {
                 Invoke("PlayBounce", 0f);
+                if (!CheckWarning)
+                {
+                    CheckWarning = true;
+                }
             }
         }
     }
@@ -147,7 +152,7 @@ public class Balls : MonoBehaviour
             if (Vector2.Distance(ball.transform.position, gameObject.transform.position) < (0.3f + 0.3f * (ball.GetComponent<Balls>().Level + Level)))
             {
                 Rigidbody2D ballRb = ball.GetComponent<Rigidbody2D>();
-                ballRb.AddForce((ball.transform.position - gameObject.transform.position)*0.5f, ForceMode2D.Impulse);
+                ballRb.AddForce((ball.transform.position - gameObject.transform.position)*0.3f, ForceMode2D.Impulse);
             }
         }
     }

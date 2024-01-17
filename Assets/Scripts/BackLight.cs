@@ -8,8 +8,9 @@ public class BackLight : MonoBehaviour
     GameObject MainCamera;
     public int LightSize = 3;
     public bool HighQuality = true, IsPause = false, CanPause = true, BLMoveOn = true, GameOver = false;
-    bool NowQuality = false;
-    float time = 0f;
+    bool NowQuality = false, BGMPlaying = false, WarningOn = false;
+    float time = 0f, WarnTime;
+    public AudioSource BGM, BTNClick;
     Scene nowScene;
     // Start is called before the first frame update
     void Start()
@@ -44,8 +45,23 @@ public class BackLight : MonoBehaviour
             GameOver = false;
             SceneManager.LoadScene("GameScreen");
         }
+        if (nowScene.name.CompareTo("MainScreen") == 0)
+        {
+            GameOver = false;
+        }
+        if (BGMPlaying && GameOver)
+        {
+            BGMPlaying = false;
+            BGM.Stop();
+        }
+        if (!BGMPlaying && !GameOver)
+        {
+            BGMPlaying = true;
+            BGM.Play();
+        }
         CheckPause();
         LightMove();
+        Warning();
     }
     void SetQuality()
     {
@@ -96,5 +112,46 @@ public class BackLight : MonoBehaviour
         {
             time = 0;
         }
+    }
+    void Warning()
+    {
+        float HighestBall = 0;
+        if (WarningOn)
+        {
+            if(WarnTime < 1f)
+            {
+                WarnTime += Time.deltaTime * 2;
+            }
+        }
+        else
+        {
+            if (WarnTime > 0f)
+            {
+                WarnTime -= Time.deltaTime * 2;
+            }
+        }
+        GameObject[] GameBalls = GameObject.FindGameObjectsWithTag("Balls");
+        foreach (GameObject ball in GameBalls)
+        {
+            if (ball.GetComponent<Balls>().CheckWarning)
+            {
+                float BallHigh = ball.transform.position.y + 0.15f * ball.GetComponent<Balls>().Level;
+                if (BallHigh > HighestBall)
+                {
+                    HighestBall = BallHigh;
+                }
+            }
+        }
+
+        if (HighestBall > 2.5f && !WarningOn)
+        {
+            WarningOn = true;
+        }
+        else if (HighestBall <= 2.5f && WarningOn)
+        {
+            WarningOn = false;
+        }
+        gameObject.GetComponent<HardLight2D>().Color = new Color(1f, Mathf.Lerp(1f,0f,WarnTime), Mathf.Lerp(1f, 0f, WarnTime));
+        gameObject.GetComponent<HardLight2D>().Color.a = 0.3f;
     }
 }
