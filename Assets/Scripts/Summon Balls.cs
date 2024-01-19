@@ -1,23 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SummonBalls : MonoBehaviour
 {
     public GameObject Lv1s, Lv2s, Lv3s, Lv4s, Lv1, Lv2, Lv3, Lv4, Lv5, Lv6, Lv7, Lv8, Lv9, Lv10, Lv11;
     public List<GameObject> LLv1s = new List<GameObject>(), LLv2s = new List<GameObject>(), LLv3s = new List<GameObject>(), LLv4s = new List<GameObject>(), LLv1 = new List<GameObject>(), LLv2 = new List<GameObject>(), LLv3 = new List<GameObject>(), LLv4 = new List<GameObject>(), LLv5 = new List<GameObject>(), LLv6 = new List<GameObject>(), LLv7 = new List<GameObject>(), LLv8 = new List<GameObject>(), LLv9 = new List<GameObject>(), LLv10 = new List<GameObject>(), LLv11 = new List<GameObject>();
     public int Score = 0;
-    int Lv1n = 10, Lv2n = 10, Lv3n = 10, Lv4n = 10, Lv5n = 10, Lv6n = 8, Lv7n = 8, Lv8n = 6, Lv9n = 6, Lv10n = 4, Lv11n = 4;
+    int Lv1n = 10, Lv2n = 10, Lv3n = 10, Lv4n = 10, Lv5n = 10, Lv6n = 8, Lv7n = 8, Lv8n = 6, Lv9n = 6, Lv10n = 4, Lv11n = 4, Level = 0;
     float SpawnCool = 1.5f, NextSpawn = 0, time = 0;
     Queue<int> NextBallsNum = new Queue<int>(3);
     int[] NextBall = new int[3];
-    bool isSampleSpawn = false, GameOver = false;
+    bool isSampleSpawn = false, GameOver = false, SpawnFirstSample = true;
     GameObject Ball, BackLight;
+    Camera MainCamera;
+    Vector2 mousePos;
     // Start is called before the first frame update
     void Start()
     {
         PrefebPools();
         BackLight = GameObject.FindWithTag("BackLight");
+        MainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         NextBallsNum.Enqueue(Random.Range(1, 5));
         NextBallsNum.Enqueue(Random.Range(1, 5));
         NextBallsNum.Enqueue(Random.Range(1, 5));
@@ -26,6 +30,8 @@ public class SummonBalls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        mousePos = Input.mousePosition;
+        mousePos = MainCamera.ScreenToWorldPoint(mousePos);
         if (Time.timeScale == 1.0f  && BackLight.GetComponent<BackLight>().IsPause && !GameOver)
         {
             Time.timeScale = 0f;
@@ -43,6 +49,7 @@ public class SummonBalls : MonoBehaviour
             {
                 SpawnSample();
             }
+
             KeyInput();
         }    
     }
@@ -178,51 +185,16 @@ public class SummonBalls : MonoBehaviour
         isSampleSpawn = true;
         NextBallsNum.Enqueue(Random.Range(1, 5));
         NextBall = NextBallsNum.ToArray();
-        switch (NextBall[0])
+        Level = NextBall[0];
+        if (SpawnFirstSample)
         {
-            case 1:
-                {
-                    Ball = GetPooledObject("1s");
-                    if (Ball != null)
-                    {
-                        Ball.transform.position = gameObject.transform.position;
-                        Ball.SetActive(true);
-                    }
-                    break;
-                }
-            case 2:
-                {
-                    Ball = GetPooledObject("2s");
-                    if (Ball != null)
-                    {
-                        Ball.transform.position = gameObject.transform.position;
-                        Ball.SetActive(true);
-                    }
-                    break;
-                }
-            case 3:
-                {
-                    Ball = GetPooledObject("3s");
-                    if (Ball != null)
-                    {
-                        Ball.transform.position = gameObject.transform.position;
-                        Ball.SetActive(true);
-                    }
-                    break;
-                }
-            case 4:
-                {
-                    Ball = GetPooledObject("4s");
-                    if (Ball != null)
-                    {
-                        Ball.transform.position = gameObject.transform.position;
-                        Ball.SetActive(true);
-                    }
-                    break;
-                }
-            default: break;
+            SpawnFirstSample = false;
+            Invoke("Sample", 0f);
         }
-        Ball.gameObject.GetComponent<BallsSample>().isNext = true;
+        else
+        {
+            Invoke("Sample", 0.5f);
+        }
         switch (NextBall[1])
         {
             case 1:
@@ -314,29 +286,104 @@ public class SummonBalls : MonoBehaviour
         }
         Ball.gameObject.GetComponent<BallsSample>().isNext = false;
     }
+    void Sample()
+    {
+        switch (Level)
+        {
+            case 1:
+                {
+                    Ball = GetPooledObject("1s");
+                    if (Ball != null)
+                    {
+                        Ball.transform.position = gameObject.transform.position;
+                        Ball.SetActive(true);
+                    }
+                    break;
+                }
+            case 2:
+                {
+                    Ball = GetPooledObject("2s");
+                    if (Ball != null)
+                    {
+                        Ball.transform.position = gameObject.transform.position;
+                        Ball.SetActive(true);
+                    }
+                    break;
+                }
+            case 3:
+                {
+                    Ball = GetPooledObject("3s");
+                    if (Ball != null)
+                    {
+                        Ball.transform.position = gameObject.transform.position;
+                        Ball.SetActive(true);
+                    }
+                    break;
+                }
+            case 4:
+                {
+                    Ball = GetPooledObject("4s");
+                    if (Ball != null)
+                    {
+                        Ball.transform.position = gameObject.transform.position;
+                        Ball.SetActive(true);
+                    }
+                    break;
+                }
+            default: break;
+        }
+        Ball.gameObject.GetComponent<BallsSample>().isNext = true;
+    }
     void KeyInput()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (!BackLight.GetComponent<BackLight>().MousePlay)
         {
-            if (NextSpawn <= time)
+            if (Input.GetKey(KeyCode.Space))
             {
-                Summon(NextBallsNum.Dequeue(), gameObject.transform.position);
-                NextSpawn = time + SpawnCool;
-                RemoveSample();
+                if (NextSpawn <= time)
+                {
+                    Summon(NextBallsNum.Dequeue(), gameObject.transform.position);
+                    NextSpawn = time + SpawnCool;
+                    RemoveSample();
+                }
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                if (gameObject.transform.position.x < -2.9f + 0.15f * Level)
+                {
+                    gameObject.transform.position += new Vector3(2f * Time.deltaTime, 0, 0);
+                }
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                if (gameObject.transform.position.x > 2.9f - 0.15f * Level)
+                {
+                    gameObject.transform.position += new Vector3(-2f * Time.deltaTime, 0, 0);
+                }
             }
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        else
         {
-            if (gameObject.transform.position.x < 2.55)
+            if (Input.GetMouseButton(0))
             {
-                gameObject.transform.position += new Vector3(2f * Time.deltaTime, 0, 0);
+                if (NextSpawn <= time)
+                {
+                    Summon(NextBallsNum.Dequeue(), gameObject.transform.position);
+                    NextSpawn = time + SpawnCool;
+                    RemoveSample();
+                }
             }
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            if (gameObject.transform.position.x > -2.55)
+            if (mousePos.x < -2.9f + 0.15f * Level)
             {
-                gameObject.transform.position += new Vector3(-2f * Time.deltaTime, 0, 0);
+                gameObject.transform.position = new Vector3(-2.85f + 0.15f * Level, 5, 0);
+            }
+            else if (mousePos.x > 2.9f - 0.15f * Level)
+            {
+                gameObject.transform.position = new Vector3(2.85f - 0.15f * Level, 5, 0);
+            }
+            else
+            {
+                gameObject.transform.position = new Vector3(mousePos.x, 5, 0);
             }
         }
     }

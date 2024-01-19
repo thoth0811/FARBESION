@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InGameMove : MonoBehaviour
 {
-    GameObject Menu, BackLight;
+    GameObject Menu, BackLight, PauseText;
     public AudioSource GameOverSound;
     bool PauseMove = false, GameOver = false;
     // Start is called before the first frame update
@@ -12,6 +12,7 @@ public class InGameMove : MonoBehaviour
     {
         Menu = GameObject.FindWithTag("Pause Menu");
         BackLight = GameObject.FindWithTag("BackLight");
+        PauseText = GameObject.FindWithTag("Paused Text");
         Menu.transform.position = new Vector3(4, 0, 0);
     }
 
@@ -29,7 +30,7 @@ public class InGameMove : MonoBehaviour
         }
         if (BackLight.GetComponent<BackLight>().IsPause && !BackLight.GetComponent<BackLight>().CanPause)
         {
-            transform.GetChild(0).gameObject.SetActive(true);
+            PauseText.transform.GetChild(0).gameObject.SetActive(true);
             PauseMove = true;
         }
         if (BackLight.GetComponent<BackLight>().GameOver && !GameOver)

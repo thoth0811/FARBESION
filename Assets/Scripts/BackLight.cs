@@ -7,7 +7,7 @@ public class BackLight : MonoBehaviour
 {
     GameObject MainCamera;
     public int LightSize = 3;
-    public bool HighQuality = true, IsPause = false, CanPause = true, BLMoveOn = true, GameOver = false;
+    public bool HighQuality = true, IsPause = false, CanPause = true, BLMoveOn = true, GameOver = false, MousePlay = false;
     bool NowQuality = false, BGMPlaying = false, WarningOn = false;
     float time = 0f, WarnTime;
     public AudioSource BGM, BTNClick;
