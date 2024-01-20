@@ -98,10 +98,12 @@ public class Buttons : MonoBehaviour
     }
     public void MouseButton()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         BackLight.GetComponent<BackLight>().MousePlay = true;
     }
     public void KeyboardButton()
     {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
         BackLight.GetComponent<BackLight>().MousePlay = false;
     }
 }

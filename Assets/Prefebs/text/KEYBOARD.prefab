@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6071442722404273783}
   - component: {fileID: 8217486558852327744}
   - component: {fileID: 3080739804103695651}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: KEYBOARD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
