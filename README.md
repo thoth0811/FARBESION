@@ -6,4 +6,4 @@
 
 유니티 버젼 2022.3.16f
 
-설치 링크 : https://docs.google.com/uc?id=1n_-scFtNWIjeoh9wg-4IlwrY3c-WJDxW?usp&export=download&confirm=t
+설치 링크 : https://drive.google.com/drive/folders/1n_-scFtNWIjeoh9wg-4IlwrY3c-WJDxW?usp=sharing
