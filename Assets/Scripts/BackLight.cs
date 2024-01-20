@@ -48,6 +48,8 @@ public class BackLight : MonoBehaviour
         if (nowScene.name.CompareTo("MainScreen") == 0)
         {
             GameOver = false;
+            gameObject.GetComponent<HardLight2D>().Color = new Color(1f, 1f, 1f);
+            gameObject.GetComponent<HardLight2D>().Color.a = 0.3f;
         }
         if (BGMPlaying && GameOver)
         {
