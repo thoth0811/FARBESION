@@ -30,7 +30,7 @@ public class InGameButtons : MonoBehaviour
         }
         if (BackLight.GetComponent<BackLight>().GameOver)
         {
-            GameOver.transform.position = Vector3.MoveTowards(GameOver.transform.position, new Vector3(0, 0, 0), 0.5f * Time.unscaledDeltaTime);
+            GameOver.transform.position = Vector3.MoveTowards(GameOver.transform.position, new Vector3(0, 0, 0), 1f * Time.unscaledDeltaTime);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -57,8 +57,6 @@ public class InGameButtons : MonoBehaviour
     public void ExitButton()
     {
         BackLight.GetComponent<BackLight>().BTNClick.Play();
-        gameObject.GetComponent<HardLight2D>().Color = new Color(1f, 1f, 1f);
-        gameObject.GetComponent<HardLight2D>().Color.a = 0.3f;
         SceneManager.LoadScene("MainScreen");
     }
     public void NewGameButton()

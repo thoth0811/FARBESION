@@ -8,8 +8,8 @@ public class BackLight : MonoBehaviour
     GameObject MainCamera;
     public int LightSize = 3;
     public bool HighQuality = true, IsPause = false, CanPause = true, BLMoveOn = true, GameOver = false, MousePlay = false;
-    bool NowQuality = false, BGMPlaying = false, WarningOn = false;
-    float time = 0f, WarnTime;
+    public bool NowQuality = false, BGMPlaying = false, WarningOn = false;
+    public float time = 0f, WarnTime;
     public AudioSource BGM, BTNClick;
     Scene nowScene;
     // Start is called before the first frame update
@@ -48,6 +48,7 @@ public class BackLight : MonoBehaviour
         if (nowScene.name.CompareTo("MainScreen") == 0)
         {
             GameOver = false;
+            WarningOn = false;
         }
         if (BGMPlaying && GameOver)
         {
@@ -120,25 +121,32 @@ public class BackLight : MonoBehaviour
         {
             if(WarnTime < 1f)
             {
-                WarnTime += Time.deltaTime * 2;
+                WarnTime += Time.unscaledDeltaTime * 2;
             }
         }
         else
         {
             if (WarnTime > 0f)
             {
-                WarnTime -= Time.deltaTime * 2;
+                WarnTime -= Time.unscaledDeltaTime * 2;
             }
         }
         GameObject[] GameBalls = GameObject.FindGameObjectsWithTag("Balls");
-        foreach (GameObject ball in GameBalls)
+        if( GameBalls == null)
         {
-            if (ball.GetComponent<Balls>().CheckWarning)
+            HighestBall = 0;
+        }
+        else
+        {
+            foreach (GameObject ball in GameBalls)
             {
-                float BallHigh = ball.transform.position.y + 0.15f * ball.GetComponent<Balls>().Level;
-                if (BallHigh > HighestBall)
+                if (ball.GetComponent<Balls>().CheckWarning)
                 {
-                    HighestBall = BallHigh;
+                    float BallHigh = ball.transform.position.y + 0.15f * ball.GetComponent<Balls>().Level;
+                    if (BallHigh > HighestBall)
+                    {
+                        HighestBall = BallHigh;
+                    }
                 }
             }
         }
