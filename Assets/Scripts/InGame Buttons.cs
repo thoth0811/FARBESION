@@ -57,6 +57,8 @@ public class InGameButtons : MonoBehaviour
     public void ExitButton()
     {
         BackLight.GetComponent<BackLight>().BTNClick.Play();
+        gameObject.GetComponent<HardLight2D>().Color = new Color(1f, 1f, 1f);
+        gameObject.GetComponent<HardLight2D>().Color.a = 0.3f;
         SceneManager.LoadScene("MainScreen");
     }
     public void NewGameButton()

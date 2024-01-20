@@ -193,7 +193,7 @@ public class SummonBalls : MonoBehaviour
         }
         else
         {
-            Invoke("Sample", 0.5f);
+            Invoke("Sample", 1.45f);
         }
         switch (NextBall[1])
         {
@@ -347,18 +347,18 @@ public class SummonBalls : MonoBehaviour
                     RemoveSample();
                 }
             }
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetAxisRaw("Horizontal") == -1)
             {
-                if (gameObject.transform.position.x < -2.9f + 0.15f * Level)
-                {
-                    gameObject.transform.position += new Vector3(2f * Time.deltaTime, 0, 0);
-                }
-            }
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                if (gameObject.transform.position.x > 2.9f - 0.15f * Level)
+                if (gameObject.transform.position.x > -2.9f + 0.15f * Level)
                 {
                     gameObject.transform.position += new Vector3(-2f * Time.deltaTime, 0, 0);
+                }
+            }
+            if (Input.GetAxisRaw("Horizontal") == 1)
+            {
+                if (gameObject.transform.position.x < 2.9f - 0.15f * Level)
+                {
+                    gameObject.transform.position += new Vector3(2f * Time.deltaTime, 0, 0);
                 }
             }
         }
