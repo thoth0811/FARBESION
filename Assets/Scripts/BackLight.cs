@@ -9,7 +9,8 @@ public class BackLight : MonoBehaviour
     public int LightSize = 3;
     public bool HighQuality = true, IsPause = false, CanPause = true, BLMoveOn = true, GameOver = false, MousePlay = false;
     public bool NowQuality = false, BGMPlaying = false, WarningOn = false;
-    public float time = 0f, WarnTime;
+    public bool Unknown = false, RandomPos = false, Mini = false, RandomMerge = false;
+    public float time = 0f, WarnTime, PopPower = 0.5f;
     public AudioSource BGM, BTNClick;
     Scene nowScene;
     // Start is called before the first frame update

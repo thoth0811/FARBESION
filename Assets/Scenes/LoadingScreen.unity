@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a116cfa0b181117418be0882d81577fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!43 &1748630782
+--- !u!43 &1351424660
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -859,7 +859,7 @@ PrefabInstance:
     - target: {fileID: 1987129318483145368, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1748630782}
+      objectReference: {fileID: 1351424660}
     - target: {fileID: 3016330716416875762, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: m_Name
       value: BackLight
@@ -881,12 +881,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 833857531}
     - target: {fileID: 7430332288394190544, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
+      propertyPath: Mini
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430332288394190544, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
+      propertyPath: Unknown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430332288394190544, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: BTNClick
       value: 
       objectReference: {fileID: 833857537}
     - target: {fileID: 7430332288394190544, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
+      propertyPath: PopPower
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430332288394190544, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
+      propertyPath: SuperPop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430332288394190544, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
+      propertyPath: RandomPos
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430332288394190544, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430332288394190544, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
+      propertyPath: RandomMerge
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7559969684976344891, guid: c437e12f621b6fe4d9e66ccc7913e201, type: 3}
       propertyPath: m_LocalPosition.x

@@ -10,7 +10,7 @@ public class Balls : MonoBehaviour
     public AudioSource BounceSound;
     public bool isMerge = false, CheckWarning = false;
     int TouchDeadLineCount = 0;
-    float TouchDeadLineTime = 0, DeadLineTime = 1f, BounceSoundVolume = 0.1f, BounceSoundSpeed = 2f;
+    float TouchDeadLineTime = 0, DeadLineTime = 1f, BounceSoundVolume = 0.1f, BounceSoundSpeed = 2f, PopPower = 0;
     bool GameOver = false;
     GameObject SpawnPoint, BackLight;
     // Start is called before the first frame update
@@ -19,6 +19,7 @@ public class Balls : MonoBehaviour
         SpawnPoint = GameObject.FindWithTag("SpawnPoint");
         BackLight = GameObject.FindWithTag("BackLight");
         BounceSound.volume = BounceSoundVolume;
+        PopPower = BackLight.GetComponent<BackLight>().PopPower;
     }
     void OnEnable()
     {
@@ -57,7 +58,15 @@ public class Balls : MonoBehaviour
                     isMerge = true;
                     col.gameObject.GetComponent<Balls>().isMerge = true;
                     ContactPoint2D contact = col.contacts[0];
-                    SpawnPoint.GetComponent<SummonBalls>().Summon(Level + 1, new Vector3(contact.point.x, contact.point.y, 0));
+                    if (!BackLight.GetComponent<BackLight>().RandomMerge)
+                    {
+                        SpawnPoint.GetComponent<SummonBalls>().Summon(Level + 1, new Vector3(contact.point.x, contact.point.y, 0));
+                    }
+                    else
+                    {
+                        SpawnPoint.GetComponent<SummonBalls>().Summon(Random.Range(1, 12), new Vector3(contact.point.x, contact.point.y, 0));
+                    }
+
                     AddScore();
                     ShowParticle(contact);
                     col.gameObject.SetActive(false);
@@ -148,11 +157,13 @@ public class Balls : MonoBehaviour
         GameObject[] GameBalls = GameObject.FindGameObjectsWithTag("Balls");
         foreach (GameObject ball in GameBalls)
         {
-
-            if (Vector2.Distance(ball.transform.position, gameObject.transform.position) < (0.3f + 0.3f * (ball.GetComponent<Balls>().Level + Level)))
+            if (Vector2.Distance(ball.transform.position, gameObject.transform.position) < (0.1f + 0.3f * (ball.GetComponent<Balls>().Level + Level)))
             {
                 Rigidbody2D ballRb = ball.GetComponent<Rigidbody2D>();
-                ballRb.AddForce((ball.transform.position - gameObject.transform.position)*0.3f, ForceMode2D.Impulse);
+                if (ballRb != null)
+                {
+                    ballRb.AddForce((ball.transform.position - gameObject.transform.position) * PopPower, ForceMode2D.Impulse);
+                }
             }
         }
     }

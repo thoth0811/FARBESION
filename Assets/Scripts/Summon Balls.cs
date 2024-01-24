@@ -22,9 +22,18 @@ public class SummonBalls : MonoBehaviour
         PrefebPools();
         BackLight = GameObject.FindWithTag("BackLight");
         MainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-        NextBallsNum.Enqueue(Random.Range(1, 5));
-        NextBallsNum.Enqueue(Random.Range(1, 5));
-        NextBallsNum.Enqueue(Random.Range(1, 5));
+        if (!BackLight.GetComponent<BackLight>().Mini)
+        {
+            NextBallsNum.Enqueue(Random.Range(1, 5));
+            NextBallsNum.Enqueue(Random.Range(1, 5));
+            NextBallsNum.Enqueue(Random.Range(1, 5));
+        }
+        else
+        {
+            NextBallsNum.Enqueue(1);
+            NextBallsNum.Enqueue(1);
+            NextBallsNum.Enqueue(1);
+        }
     }
 
     // Update is called once per frame
@@ -55,12 +64,14 @@ public class SummonBalls : MonoBehaviour
     }
     void RemoveSample()
     {
-        GameObject[] GameBalls = GameObject.FindGameObjectsWithTag("BallSample");
-        foreach (GameObject ball in GameBalls)
+        if (!BackLight.GetComponent<BackLight>().Unknown)
         {
-            ball.SetActive(false);
+            GameObject[] GameBalls = GameObject.FindGameObjectsWithTag("BallSample");
+            foreach (GameObject ball in GameBalls)
+            {
+                ball.SetActive(false);
+            }
         }
-
         isSampleSpawn = false;
     }
     public void Summon(int Lv, Vector3 pos)
@@ -183,108 +194,118 @@ public class SummonBalls : MonoBehaviour
     void SpawnSample()
     {
         isSampleSpawn = true;
-        NextBallsNum.Enqueue(Random.Range(1, 5));
-        NextBall = NextBallsNum.ToArray();
-        Level = NextBall[0];
-        if (SpawnFirstSample)
+        if (!BackLight.GetComponent<BackLight>().Mini)
         {
-            SpawnFirstSample = false;
-            Invoke("Sample", 0f);
+            NextBallsNum.Enqueue(Random.Range(1, 5));
         }
         else
         {
-            Invoke("Sample", 1.45f);
+            NextBallsNum.Enqueue(1);
         }
-        switch (NextBall[1])
+        NextBall = NextBallsNum.ToArray();
+        Level = NextBall[0];
+        if (!BackLight.GetComponent<BackLight>().Unknown)
         {
-            case 1:
-                {
-                    Ball = GetPooledObject("1s");
-                    if (Ball != null)
+            if (SpawnFirstSample)
+            {
+                SpawnFirstSample = false;
+                Invoke("Sample", 0f);
+            }
+            else
+            {
+                Invoke("Sample", 1.45f);
+            }
+            switch (NextBall[1])
+            {
+                case 1:
                     {
-                        Ball.transform.position = new Vector3(-5, 4.5f, 0);
-                        Ball.SetActive(true);
+                        Ball = GetPooledObject("1s");
+                        if (Ball != null)
+                        {
+                            Ball.transform.position = new Vector3(-5, 4.5f, 0);
+                            Ball.SetActive(true);
+                        }
+                        break;
                     }
-                    break;
-                }
-            case 2:
-                {
-                    Ball = GetPooledObject("2s");
-                    if (Ball != null)
+                case 2:
                     {
-                        Ball.transform.position = new Vector3(-5, 4.5f, 0);
-                        Ball.SetActive(true);
+                        Ball = GetPooledObject("2s");
+                        if (Ball != null)
+                        {
+                            Ball.transform.position = new Vector3(-5, 4.5f, 0);
+                            Ball.SetActive(true);
+                        }
+                        break;
                     }
-                    break;
-                }
-            case 3:
-                {
-                    Ball = GetPooledObject("3s");
-                    if (Ball != null)
+                case 3:
                     {
-                        Ball.transform.position = new Vector3(-5, 4.5f, 0);
-                        Ball.SetActive(true);
+                        Ball = GetPooledObject("3s");
+                        if (Ball != null)
+                        {
+                            Ball.transform.position = new Vector3(-5, 4.5f, 0);
+                            Ball.SetActive(true);
+                        }
+                        break;
                     }
-                    break;
-                }
-            case 4:
-                {
-                    Ball = GetPooledObject("4s");
-                    if (Ball != null)
+                case 4:
                     {
-                        Ball.transform.position = new Vector3(-5, 4.5f, 0);
-                        Ball.SetActive(true);
+                        Ball = GetPooledObject("4s");
+                        if (Ball != null)
+                        {
+                            Ball.transform.position = new Vector3(-5, 4.5f, 0);
+                            Ball.SetActive(true);
+                        }
+                        break;
                     }
-                    break;
-                }
-            default: break;          
+                default: break;
+            }
+            Ball.gameObject.GetComponent<BallsSample>().isNext = false;
+            switch (NextBall[2])
+            {
+                case 1:
+                    {
+                        Ball = GetPooledObject("1s");
+                        if (Ball != null)
+                        {
+                            Ball.transform.position = new Vector3(-7, 4.5f, 0);
+                            Ball.SetActive(true);
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        Ball = GetPooledObject("2s");
+                        if (Ball != null)
+                        {
+                            Ball.transform.position = new Vector3(-7, 4.5f, 0);
+                            Ball.SetActive(true);
+                        }
+                        break;
+                    }
+                case 3:
+                    {
+                        Ball = GetPooledObject("3s");
+                        if (Ball != null)
+                        {
+                            Ball.transform.position = new Vector3(-7, 4.5f, 0);
+                            Ball.SetActive(true);
+                        }
+                        break;
+                    }
+                case 4:
+                    {
+                        Ball = GetPooledObject("4s");
+                        if (Ball != null)
+                        {
+                            Ball.transform.position = new Vector3(-7, 4.5f, 0);
+                            Ball.SetActive(true);
+                        }
+                        break;
+                    }
+                default: break;
+            }
+            Ball.gameObject.GetComponent<BallsSample>().isNext = false;
         }
-        Ball.gameObject.GetComponent<BallsSample>().isNext = false;
-        switch (NextBall[2])         
-        {                            
-            case 1:
-                {
-                    Ball = GetPooledObject("1s");
-                    if (Ball != null)
-                    {
-                        Ball.transform.position = new Vector3(-7, 4.5f, 0);
-                        Ball.SetActive(true);
-                    }
-                    break;
-                }
-            case 2:
-                {
-                    Ball = GetPooledObject("2s");
-                    if (Ball != null)
-                    {
-                        Ball.transform.position = new Vector3(-7, 4.5f, 0);
-                        Ball.SetActive(true);
-                    }
-                    break;
-                }
-            case 3:
-                {
-                    Ball = GetPooledObject("3s");
-                    if (Ball != null)
-                    {
-                        Ball.transform.position = new Vector3(-7, 4.5f, 0);
-                        Ball.SetActive(true);
-                    }
-                    break;
-                }
-            case 4:
-                {
-                    Ball = GetPooledObject("4s");
-                    if (Ball != null)
-                    {
-                        Ball.transform.position = new Vector3(-7, 4.5f, 0);
-                        Ball.SetActive(true);
-                    }
-                    break;
-                }
-            default: break;
-        }
-        Ball.gameObject.GetComponent<BallsSample>().isNext = false;
     }
     void Sample()
     {
@@ -338,53 +359,86 @@ public class SummonBalls : MonoBehaviour
     {
         if (!BackLight.GetComponent<BackLight>().MousePlay)
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (!BackLight.GetComponent<BackLight>().RandomPos)
             {
-                if (NextSpawn <= time)
+                if (Input.GetKey(KeyCode.Space))
                 {
-                    Summon(NextBallsNum.Dequeue(), gameObject.transform.position);
-                    NextSpawn = time + SpawnCool;
-                    RemoveSample();
+                    if (NextSpawn <= time)
+                    {
+                        Summon(NextBallsNum.Dequeue(), gameObject.transform.position);
+                        NextSpawn = time + SpawnCool;
+                        RemoveSample();
+                    }
+                }
+                if (Input.GetAxisRaw("Horizontal") == -1)
+                {
+                    if (gameObject.transform.position.x > -2.9f + 0.15f * Level)
+                    {
+                        gameObject.transform.position += new Vector3(-2f * Time.deltaTime, 0, 0);
+                    }
+                }
+                if (Input.GetAxisRaw("Horizontal") == 1)
+                {
+                    if (gameObject.transform.position.x < 2.9f - 0.15f * Level)
+                    {
+                        gameObject.transform.position += new Vector3(2f * Time.deltaTime, 0, 0);
+                    }
                 }
             }
-            if (Input.GetAxisRaw("Horizontal") == -1)
+            else
             {
-                if (gameObject.transform.position.x > -2.9f + 0.15f * Level)
+                if (Input.GetKey(KeyCode.Space))
                 {
-                    gameObject.transform.position += new Vector3(-2f * Time.deltaTime, 0, 0);
-                }
-            }
-            if (Input.GetAxisRaw("Horizontal") == 1)
-            {
-                if (gameObject.transform.position.x < 2.9f - 0.15f * Level)
-                {
-                    gameObject.transform.position += new Vector3(2f * Time.deltaTime, 0, 0);
+                    if (NextSpawn <= time)
+                    {
+                        gameObject.transform.position = new Vector3(Random.Range(-2.9f + 0.15f * Level, 2.9f - 0.15f * Level), 5, 0);
+                        Summon(NextBallsNum.Dequeue(), gameObject.transform.position);
+                        NextSpawn = time + SpawnCool;
+                        RemoveSample();
+                    }
                 }
             }
         }
         else
         {
-            if (Input.GetMouseButton(0))
+            if (!BackLight.GetComponent<BackLight>().RandomPos)
             {
-                if (NextSpawn <= time)
+                if (Input.GetMouseButton(0))
                 {
-                    Summon(NextBallsNum.Dequeue(), gameObject.transform.position);
-                    NextSpawn = time + SpawnCool;
-                    RemoveSample();
+                    if (NextSpawn <= time)
+                    {
+                        Summon(NextBallsNum.Dequeue(), gameObject.transform.position);
+                        NextSpawn = time + SpawnCool;
+                        RemoveSample();
+                    }
                 }
-            }
-            if (mousePos.x < -2.9f + 0.15f * Level)
-            {
-                gameObject.transform.position = new Vector3(-2.85f + 0.15f * Level, 5, 0);
-            }
-            else if (mousePos.x > 2.9f - 0.15f * Level)
-            {
-                gameObject.transform.position = new Vector3(2.85f - 0.15f * Level, 5, 0);
+                if (mousePos.x < -2.9f + 0.15f * Level)
+                {
+                    gameObject.transform.position = new Vector3(-2.85f + 0.15f * Level, 5, 0);
+                }
+                else if (mousePos.x > 2.9f - 0.15f * Level)
+                {
+                    gameObject.transform.position = new Vector3(2.85f - 0.15f * Level, 5, 0);
+                }
+                else
+                {
+                    gameObject.transform.position = new Vector3(mousePos.x, 5, 0);
+                }
             }
             else
             {
-                gameObject.transform.position = new Vector3(mousePos.x, 5, 0);
+                if (Input.GetMouseButton(0))
+                {
+                    if (NextSpawn <= time)
+                    {
+                        gameObject.transform.position = new Vector3(Random.Range(-2.9f + 0.15f * Level, 2.9f - 0.15f * Level), 5, 0);
+                        Summon(NextBallsNum.Dequeue(), gameObject.transform.position);
+                        NextSpawn = time + SpawnCool;
+                        RemoveSample();
+                    }
+                }
             }
+
         }
     }
     void PrefebPools()
