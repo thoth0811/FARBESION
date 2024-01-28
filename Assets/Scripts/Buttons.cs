@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
-    GameObject MainCamera, BackLight;
+    GameObject MainCamera, BackLight, Setting, Mode;
     bool SetBtnOn, BackBtnOn = false;
     Scene nowScene;
     // Start is called before the first frame update
@@ -13,6 +13,8 @@ public class Buttons : MonoBehaviour
     {
         BackLight = GameObject.FindWithTag("BackLight");
         MainCamera = GameObject.FindWithTag("MainCamera");
+        Setting = GameObject.FindWithTag("Setting");
+        Mode = GameObject.FindWithTag("Mode");
     }
 
     // Update is called once per frame
@@ -41,10 +43,18 @@ public class Buttons : MonoBehaviour
         BackLight.GetComponent<BackLight>().BTNClick.Play();
         SceneManager.LoadScene("GameLoadingScreen");
     }
-
     public void SettingButton()
     {
         BackLight.GetComponent<BackLight>().BTNClick.Play();
+        Setting.transform.position = new Vector3(0, -12, 0);
+        Mode.transform.position = new Vector3(0, -24, 0);
+        SetBtnOn = true;
+    }
+    public void ModeButton()
+    {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
+        Setting.transform.position = new Vector3(0, -24, 0);
+        Mode.transform.position = new Vector3(0, -12, 0);
         SetBtnOn = true;
     }
     public void ExitButton()
@@ -105,5 +115,37 @@ public class Buttons : MonoBehaviour
     {
         BackLight.GetComponent<BackLight>().BTNClick.Play();
         BackLight.GetComponent<BackLight>().MousePlay = false;
+    }
+    public void RandomBall()
+    {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
+        BackLight.GetComponent<BackLight>().Unknown = !BackLight.GetComponent<BackLight>().Unknown;
+    }
+    public void RandomPosition()
+    {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
+        BackLight.GetComponent<BackLight>().RandomPos = !BackLight.GetComponent<BackLight>().RandomPos;
+    }
+    public void RandomMerge()
+    {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
+        BackLight.GetComponent<BackLight>().RandomMerge = !BackLight.GetComponent<BackLight>().RandomMerge;
+    }
+    public void MiniBall()
+    {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
+        BackLight.GetComponent<BackLight>().Mini = !BackLight.GetComponent<BackLight>().Mini;
+    }
+    public void PopcornWorld()
+    {
+        BackLight.GetComponent<BackLight>().BTNClick.Play();
+        if (BackLight.GetComponent<BackLight>().PopPower == 0.5f)
+        {
+            BackLight.GetComponent<BackLight>().PopPower = 5f;
+        }
+        else
+        {
+            BackLight.GetComponent<BackLight>().PopPower = 0.5f;
+        }
     }
 }

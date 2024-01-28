@@ -57,6 +57,7 @@ public class InGameButtons : MonoBehaviour
     public void ExitButton()
     {
         BackLight.GetComponent<BackLight>().BTNClick.Play();
+        BackLight.GetComponent<BackLight>().IsPause = false;
         SceneManager.LoadScene("MainScreen");
     }
     public void NewGameButton()

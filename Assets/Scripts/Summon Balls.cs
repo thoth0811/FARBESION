@@ -372,17 +372,19 @@ public class SummonBalls : MonoBehaviour
                 }
                 if (Input.GetAxisRaw("Horizontal") == -1)
                 {
-                    if (gameObject.transform.position.x > -2.9f + 0.15f * Level)
-                    {
-                        gameObject.transform.position += new Vector3(-2f * Time.deltaTime, 0, 0);
-                    }
+                    gameObject.transform.position += new Vector3(-2f * Time.deltaTime, 0, 0);
                 }
                 if (Input.GetAxisRaw("Horizontal") == 1)
                 {
-                    if (gameObject.transform.position.x < 2.9f - 0.15f * Level)
-                    {
-                        gameObject.transform.position += new Vector3(2f * Time.deltaTime, 0, 0);
-                    }
+                    gameObject.transform.position += new Vector3(2f * Time.deltaTime, 0, 0);
+                }
+                if (gameObject.transform.position.x <= -2.85f + 0.15f * Level)
+                {
+                    gameObject.transform.position = new Vector3(-2.85f + 0.15f * Level, 5, 0);
+                }
+                if (gameObject.transform.position.x >= 2.85f - 0.15f * Level)
+                {
+                    gameObject.transform.position = new Vector3(2.85f - 0.15f * Level, 5, 0);
                 }
             }
             else
@@ -391,7 +393,7 @@ public class SummonBalls : MonoBehaviour
                 {
                     if (NextSpawn <= time)
                     {
-                        gameObject.transform.position = new Vector3(Random.Range(-2.9f + 0.15f * Level, 2.9f - 0.15f * Level), 5, 0);
+                        gameObject.transform.position = new Vector3(Random.Range(-2.85f + 0.15f * Level, 2.85f - 0.15f * Level), 5, 0);
                         Summon(NextBallsNum.Dequeue(), gameObject.transform.position);
                         NextSpawn = time + SpawnCool;
                         RemoveSample();
@@ -412,11 +414,11 @@ public class SummonBalls : MonoBehaviour
                         RemoveSample();
                     }
                 }
-                if (mousePos.x < -2.9f + 0.15f * Level)
+                if (mousePos.x < -2.85f + 0.15f * Level)
                 {
                     gameObject.transform.position = new Vector3(-2.85f + 0.15f * Level, 5, 0);
                 }
-                else if (mousePos.x > 2.9f - 0.15f * Level)
+                else if (mousePos.x > 2.85f - 0.15f * Level)
                 {
                     gameObject.transform.position = new Vector3(2.85f - 0.15f * Level, 5, 0);
                 }
