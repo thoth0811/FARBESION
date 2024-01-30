@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 6233979314499144515}
   - component: {fileID: 4933877950197836405}
   - component: {fileID: 7226762290278273030}
-  m_Layer: 5
+  - component: {fileID: -5006256053047438249}
+  m_Layer: 9
   m_Name: POPCORN WORLD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 50}
+  m_SizeDelta: {x: 570, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6233979314499144515
 CanvasRenderer:
@@ -334,3 +335,15 @@ PolygonCollider2D:
       - {x: -277.06683, y: 89.87015}
       - {x: -277.0401, y: 110.96673}
   m_UseDelaunayMesh: 1
+--- !u!114 &-5006256053047438249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964874762417037910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9e5a39d12b2a44a9d5ce860fdc0949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

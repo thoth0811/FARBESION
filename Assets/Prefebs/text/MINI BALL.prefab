@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 8736631130286864798}
   - component: {fileID: 7725572190189386897}
   - component: {fileID: 4791462631319368170}
-  m_Layer: 5
+  - component: {fileID: 520691741426738050}
+  - component: {fileID: 7384745884771682067}
+  m_Layer: 9
   m_Name: MINI BALL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 50}
+  m_SizeDelta: {x: 580, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7725572190189386897
 CanvasRenderer:
@@ -134,3 +136,122 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!60 &520691741426738050
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2713850610750471529}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 255.99194, y: -9.967957}
+      - {x: 283.31323, y: -9.824036}
+      - {x: 283.3169, y: -30.943726}
+      - {x: 235.17908, y: -30.92035}
+      - {x: 235.22316, y: 51.005253}
+      - {x: 256.0166, y: 51.03735}
+    - - {x: 175.81348, y: -31.007324}
+      - {x: 223.9762, y: -30.983887}
+      - {x: 224.00525, y: -9.86298}
+      - {x: 196.6649, y: -9.963497}
+      - {x: 196.64929, y: 51.040466}
+      - {x: 175.82947, y: 50.972656}
+    - - {x: 122.09094, y: 51.406555}
+      - {x: 116.1532, y: 48.968323}
+      - {x: 79.08836, y: -30.997921}
+      - {x: 100.84094, y: -30.950928}
+      - {x: 108.35156, y: -14.492249}
+      - {x: 135.55261, y: -14.548462}
+      - {x: 142.94727, y: -30.947937}
+      - {x: 164.79579, y: -31.021053}
+      - {x: 127.63209, y: 48.735897}
+    - - {x: 64.242676, y: 10.019287}
+      - {x: 68.67859, y: 17.041992}
+      - {x: 69.254875, y: 33.618526}
+      - {x: 60.201538, y: 45.68744}
+      - {x: 43.42871, y: 51.042847}
+      - {x: 15.480469, y: 50.963806}
+      - {x: 15.4658375, y: -31.008053}
+      - {x: 43.85205, y: -30.97876}
+      - {x: 60.50415, y: -25.277283}
+      - {x: 69.65576, y: -12.52063}
+      - {x: 68.376595, y: 3.9836388}
+    - - {x: -33.30481, y: 50.97235}
+      - {x: -33.243668, y: -31.033077}
+      - {x: -53.65735, y: -30.953125}
+      - {x: -53.583, y: 51.051754}
+    - - {x: -130.4751, y: 51.000732}
+      - {x: -88.25098, y: 1.2969971}
+      - {x: -88.319336, y: 50.96167}
+      - {x: -67.52075, y: 51.028687}
+      - {x: -67.53076, y: -30.94867}
+      - {x: -87.7583, y: -30.982056}
+      - {x: -129.0204, y: 17.720707}
+      - {x: -129.01855, y: -30.990723}
+      - {x: -149.77515, y: -30.88086}
+      - {x: -149.75769, y: 51.027767}
+    - - {x: -163.59497, y: 51.038513}
+      - {x: -163.5514, y: -30.961056}
+      - {x: -183.87769, y: -30.902405}
+      - {x: -183.92871, y: 50.974728}
+    - - {x: -260.9104, y: 51.026794}
+      - {x: -238.81189, y: 25.5141}
+      - {x: -216.97913, y: 51.008057}
+      - {x: -197.84326, y: 50.96399}
+      - {x: -197.82532, y: -30.96027}
+      - {x: -218.59106, y: -30.975891}
+      - {x: -218.48926, y: 17.672546}
+      - {x: -238.97609, y: -6.669491}
+      - {x: -259.19983, y: 17.644897}
+      - {x: -259.32874, y: -30.935059}
+      - {x: -280.06995, y: -30.97937}
+      - {x: -280.1106, y: 51.021057}
+  m_UseDelaunayMesh: 1
+--- !u!114 &7384745884771682067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2713850610750471529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9e5a39d12b2a44a9d5ce860fdc0949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
