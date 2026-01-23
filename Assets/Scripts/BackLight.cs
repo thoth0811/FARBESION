@@ -13,6 +13,15 @@ public class BackLight : MonoBehaviour
     public float time = 0f, WarnTime, PopPower = 0.5f;
     public AudioSource BGM, BTNClick;
     Scene nowScene;
+    private static BackLight instance;
+    void Awake() {
+        if (instance == null) {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else {
+            Destroy(gameObject); // 중복 객체 파괴
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {

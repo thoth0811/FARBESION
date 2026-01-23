@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class DDOL : MonoBehaviour
 {
+    private static DDOL instance;
+    void Awake() {
+        if (instance == null) {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else {
+            Destroy(gameObject); // 중복 객체 파괴
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
